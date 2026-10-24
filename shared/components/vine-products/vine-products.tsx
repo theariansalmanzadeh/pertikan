@@ -5,7 +5,7 @@ import { vineProducts } from "@/shared/contant/vine";
 export function VineProducts() {
   return (
     <section className="bg-white">
-      <div className="hidden flex-col px-6 py-16 sm:flex md:px-10 lg:px-14">
+      <div className="hidden flex-col py-16 sm:flex ">
         {vineProducts.map((product) => (
           <VineCard key={product.id} product={product} />
         ))}
