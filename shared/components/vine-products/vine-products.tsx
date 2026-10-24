@@ -5,13 +5,13 @@ import { vineProducts } from "@/shared/contant/vine";
 export function VineProducts() {
   return (
     <section className="bg-white">
-      <div className="hidden flex-col gap-10 px-6 py-16 sm:flex md:px-10 lg:gap-14 lg:px-14">
+      <div className="hidden flex-col px-6 py-16 sm:flex md:px-10 lg:px-14">
         {vineProducts.map((product) => (
           <VineCard key={product.id} product={product} />
         ))}
       </div>
 
-      <div className="flex flex-col gap-10 py-8 sm:hidden">
+      <div className="flex flex-col py-8 sm:hidden">
         {vineProducts.map((product) => (
           <MobileVineCard key={product.id} product={product} />
         ))}

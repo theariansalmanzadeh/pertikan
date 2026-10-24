@@ -31,21 +31,32 @@ export default function Home() {
     <div className="flex flex-1 flex-col">
       <Hero />
       <Features />
-      <Cta
-        eyebrow="Serving Rituals & Gastronomy"
-        title="Made for moments worth keeping."
-        description="Whether poured chilled as a luminous aperitif, paired beside aged alpine cheeses and spicy cured Burgenland ham, or savored slowly as an evening digestif, honey wine rewards unhurried table craft."
-        href="#shop"
-      />
       <VineProducts />
-      <HoneyProducts />
       <Cta
         eyebrow="Serving Rituals & Gastronomy"
-        title="Made for moments worth keeping."
+        title={() => (
+          <>
+            <span className="text-neutral-900">Made for moments worth keeping.</span>
+          </>
+        )}
         description="Whether poured chilled as a luminous aperitif, paired beside aged alpine cheeses and spicy cured Burgenland ham, or savored slowly as an evening digestif, honey wine rewards unhurried table craft."
         href="#shop"
       />
-      <FounderQuote />
+      <HoneyProducts />
+      {/* <FounderQuote /> */}
+      <Cta
+        eyebrow="Serving Rituals & Gastronomy"
+        title={() => (
+          <>
+            <span className="text-neutral-900">Discover your </span>
+            <span className="text-[#c5b395]">
+              <span className="font-light italic">new</span> tradition.
+            </span>
+          </>
+        )}
+        description="Whether poured chilled as a luminous aperitif, paired beside aged alpine cheeses and spicy cured Burgenland ham, or savored slowly as an evening digestif, honey wine rewards unhurried table craft."
+        href="#shop"
+      />
       <Footer />
     </div>
   );

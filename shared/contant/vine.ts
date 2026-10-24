@@ -22,32 +22,92 @@ export type VineProduct = {
 
 export const vineProducts: VineProduct[] = [
   {
-    id: "u-and-me-frizzante",
-    title: "U&Me Frizzante",
-    subtitle: "Sparkling Uhudler & Met",
+    id: "mitra",
+    title: "Mitra",
+    subtitle: "Honey Wine — The Original",
     description:
-      "A refreshingly sparkling interpretation uniting the Southern Burgenland Uhudler grape and 15-month aged apiary mead.",
+      "One of humanity's oldest alcoholic beverages, brewed according to an old recipe using fine honey from Pertikan's own apiary and pure water.",
     tastingNotes: {
       label: "Tasting Notes",
-      body: "Vibrant, fruity acidity meets delicate honey sweetness, lifted by fine, persistent perlage for a lively lightness on the palate.",
+      body: "Deep warm blossom honey on the nose, evolving into structured beeswax, dried meadow herbs, and a long, velvety amber finish developed through patient barrel rest.",
     },
     specs: [
       {
         label: "Maturation",
-        value: "15 Months Aged Apiary Mead",
+        value: "15–18 Months Barrel Aged",
       },
       {
         label: "Purity & Sulfites",
-        value: "Without Chemical Additives - Sulfites (Uhudler Component Only)",
+        value: "Zero Chemical Additives · No Sulfites",
       },
       {
         label: "Recommended Service",
-        value: "6–8 °C · Slender Flute or Sparkling Tulip Glass",
+        value: "10–14 °C · Tulip White Wine or Digestif Stem",
       },
     ],
     image: {
       src: "/images/vine.png",
-      alt: "U&Me Frizzante bottle",
+      alt: "Mitra honey wine bottle",
+    },
+    href: "#shop",
+  },
+  {
+    id: "mitra-frizzante",
+    title: "Mitra Frizzante",
+    subtitle: "Sparkling Honey Wine",
+    description:
+      "A refreshing, sparkling interpretation of traditional mead, crafted from fine honey and pure water, then refined with delicate carbonation.",
+    tastingNotes: {
+      label: "Tasting Notes",
+      body: "Golden honey warmth meets lively effervescence, with a delicate sweetness and a bright, refreshing finish.",
+    },
+    specs: [
+      {
+        label: "Maturation",
+        value: "15–18 Months Barrel Aged",
+      },
+      {
+        label: "Purity & Sulfites",
+        value: "Zero Chemical Additives · No Sulfites",
+      },
+      {
+        label: "Recommended Service",
+        value: "Well Chilled · Sparkling Wine Glass",
+      },
+    ],
+    image: {
+      src: "/images/vine.png",
+      alt: "Mitra Frizzante sparkling honey wine bottle",
+    },
+    href: "#shop",
+  },
+  {
+    id: "u-and-me",
+    title: "U&Me",
+    subtitle: "Uhudler & Met — Sweet & Wild",
+    description:
+      "A meeting of wild Southern Burgenland Uhudler grapes and matured mead from Pertikan's apiary — sweet, aromatic, and distinctly of this land.",
+    tastingNotes: {
+      label: "Tasting Notes",
+      body: "Woodland strawberry and blackcurrant lift into matured honey wine, with a soft, lingering sweetness and a wild berry finish.",
+    },
+    specs: [
+      {
+        label: "Maturation",
+        value: "15 Months Matured Mead Base",
+      },
+      {
+        label: "Purity & Sulfites",
+        value: "Zero Chemical Additives · Natural Sulfites (Uhudler Only)",
+      },
+      {
+        label: "Recommended Service",
+        value: "10–12 °C · Universal Burgundy or Aromatic Wine Glass",
+      },
+    ],
+    image: {
+      src: "/images/vine.png",
+      alt: "U&Me Uhudler and Met bottle",
     },
     href: "#shop",
   },

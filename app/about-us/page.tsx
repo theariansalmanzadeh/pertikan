@@ -3,9 +3,6 @@ import type { Metadata } from "next";
 import { AboutImageText } from "@/shared/components/about-image-text";
 import { AboutStory } from "@/shared/components/about-story";
 import { AboutTextFounder } from "@/shared/components/about-text-founder";
-import { HoneyProducts } from "@/shared/components/honey-products/honey-products";
-import { VineProducts } from "@/shared/components/vine-products/vine-products";
-import { ContactUs } from "@/shared/components/contact-us";
 
 export const metadata: Metadata = {
   title: "Our Story",
@@ -29,7 +26,6 @@ export default function AboutUsPage() {
       <AboutStory />
       <AboutImageText />
       <AboutTextFounder />
-      <ContactUs />
     </>
   );
 }

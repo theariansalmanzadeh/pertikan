@@ -23,7 +23,7 @@ const features = [
 
 export function Features() {
   const ref = useRef<HTMLElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.35 });
+  const isInView = useInView(ref, { once: true, amount: 0.65 });
 
   return (
     <section
