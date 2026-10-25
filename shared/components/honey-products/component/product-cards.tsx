@@ -1,103 +1,135 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import {
-  ProductCard,
-  type ProductCardProps,
-} from "@/shared/components/honey-products/component/product-card";
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from "motion/react";
+
 import { MobileHoneyCard } from "@/shared/components/honey-products/component/mobile-honey-card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/shared/components/ui/carousel";
+import { ProductCard } from "@/shared/components/honey-products/component/product-card";
+import { HONEY_PRODUCTS } from "@/shared/contant/honey-products";
+import { computeScrollSequenceState } from "@/shared/utils/scroll-math";
 
-const productDetails = [
-  {
-    label: "Aroma & Palate",
-    body: "Finely whipped through gentle mechanical stirring for a velvety, spreadable consistency. Delicate orchard blossom sweetness that melts effortlessly on the tongue.",
-  },
-  {
-    label: "Texture & Crystallization",
-    body: "Naturally fine, stable micro-crystalline texture; never drips.",
-  },
-  {
-    label: "Table & Culinary Ritual",
-    body: "Warm sourdough crust, alpine butter, soft ripened cheeses, and morning herbal infusions.",
-  },
-] as const;
+function DesktopScrollCards() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [maxTranslate, setMaxTranslate] = useState(0);
+  const [stickyHeight, setStickyHeight] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
-const products: ProductCardProps[] = [
-  {
-    title: "Creamed Honey",
-    subtitle: "Spring & Early Summer Meadow Harvest",
-    image: {
-      src: "/images/honey.png",
-      alt: "Creamed Honey jar",
-    },
-    details: productDetails,
-  },
-  {
-    title: "Creamed Honey",
-    subtitle: "Spring & Early Summer Meadow Harvest",
-    image: {
-      src: "/images/honey.png",
-      alt: "Creamed Honey jar",
-    },
-    details: productDetails,
-  },
-  {
-    title: "Creamed Honey",
-    subtitle: "Spring & Early Summer Meadow Harvest",
-    image: {
-      src: "/images/honey.png",
-      alt: "Creamed Honey jar",
-    },
-    details: productDetails,
-  },
-  {
-    title: "Creamed Honey",
-    subtitle: "Spring & Early Summer Meadow Harvest",
-    image: {
-      src: "/images/honey.png",
-      alt: "Creamed Honey jar",
-    },
-    details: productDetails,
-  },
-  {
-    title: "Creamed Honey",
-    subtitle: "Spring & Early Summer Meadow Harvest",
-    image: {
-      src: "/images/honey.png",
-      alt: "Creamed Honey jar",
-    },
-    details: productDetails,
-  },
-];
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+
+  const x = useTransform(scrollYProgress, [0, 1], [0, -maxTranslate]);
+
+  useMotionValueEvent(scrollYProgress, "change", (value) => {
+    setScrollProgress(value);
+  });
+
+  useEffect(() => {
+    const measure = () => {
+      const track = trackRef.current;
+      if (!track) return;
+      const overflow = track.scrollWidth - window.innerWidth;
+      setMaxTranslate(Math.max(0, overflow));
+      setStickyHeight(Math.max(track.scrollHeight + 96, window.innerHeight));
+    };
+
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  const seqState = computeScrollSequenceState(
+    scrollProgress,
+    HONEY_PRODUCTS.length,
+    false
+  );
+
+  return (
+    <div
+      ref={sectionRef}
+      className="relative hidden sm:block"
+      style={{
+        height: stickyHeight
+          ? `calc(${stickyHeight}px + ${maxTranslate}px)`
+          : "200vh",
+      }}
+    >
+      <div
+        className="sticky top-0 flex items-center overflow-x-clip py-12"
+        style={{ minHeight: stickyHeight ? `${stickyHeight}px` : "100vh" }}
+      >
+        <motion.div
+          ref={trackRef}
+          style={{ x }}
+          className="flex w-max items-stretch gap-6 px-6 md:px-10 lg:px-14"
+        >
+          {HONEY_PRODUCTS.map((product) => (
+            <div key={product.id} className="flex shrink-0">
+              <ProductCard
+                product={product}
+                rotationY={seqState.rotationY}
+                tiltZ={seqState.tiltZ}
+              />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+function MobileScrollCards() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (value) => {
+    setScrollProgress(value);
+  });
+
+  const seqState = computeScrollSequenceState(
+    scrollProgress,
+    HONEY_PRODUCTS.length,
+    false
+  );
+
+  return (
+    <div ref={sectionRef} className="flex flex-col gap-10 sm:hidden">
+      {HONEY_PRODUCTS.map((product) => (
+        <MobileHoneyCard
+          key={product.id}
+          product={product}
+          rotationY={seqState.rotationY}
+          tiltZ={seqState.tiltZ}
+        />
+      ))}
+    </div>
+  );
+}
 
 export function ProductCards() {
-  return (
-    <>
-      <div className="hidden sm:block">
-        <Carousel opts={{ loop: true, align: "start" }} className="w-full">
-          <CarouselContent>
-            {products.map((product, index) => (
-              <CarouselItem
-                key={`${product.title}-${index}`}
-                className="basis-1/3 md:basis-[600px]"
-              >
-                <ProductCard {...product} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </div>
+  const [isDesktop, setIsDesktop] = useState(true);
 
-      <div className="flex flex-col gap-10 sm:hidden">
-        {products.map((product, index) => (
-          <MobileHoneyCard
-            key={`${product.title}-mobile-${index}`}
-            product={product}
-          />
-        ))}
-      </div>
-    </>
-  );
+  useEffect(() => {
+    const update = () => setIsDesktop(window.innerWidth >= 640);
+    const rafId = requestAnimationFrame(update);
+    window.addEventListener("resize", update);
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
+  return isDesktop ? <DesktopScrollCards /> : <MobileScrollCards />;
 }

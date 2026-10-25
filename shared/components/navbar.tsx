@@ -1,24 +1,27 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import LiquidGlass from "liquid-glass-react";
 
 import { MobileNavbar } from "@/shared/components/mobile-navbar";
 import { navLinks } from "@/shared/contant/nav";
 import { cn } from "@/lib/utils";
-import LiquidGlass from "liquid-glass-react";
 
 type NavbarProps = {
   variant?: "overlay" | "light";
 };
 
-export function Navbar({ variant = "overlay" }: NavbarProps) {
-  const isLight = variant === "light";
+export function Navbar({ variant }: NavbarProps) {
+  const pathname = usePathname();
+  const resolvedVariant =
+    variant ?? (pathname === "/" ? "overlay" : "light");
+  const isLight = resolvedVariant === "light";
   const router = useRouter();
 
   return (
     <>
-      <MobileNavbar variant={variant} />
+      <MobileNavbar variant={resolvedVariant} />
 
       <nav
         className={cn(

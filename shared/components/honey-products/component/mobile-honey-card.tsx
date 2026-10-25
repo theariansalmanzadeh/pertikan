@@ -1,26 +1,42 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-import type { ProductCardProps } from "@/shared/components/honey-products/component/product-card";
+import { HoneyJar3D } from "@/shared/components/apiary-collection/honey-jar-3d";
 import { Button } from "@/shared/components/ui/button";
+import type { HoneyProduct } from "@/shared/contant/honey-products";
 
 type MobileHoneyCardProps = {
-  product: ProductCardProps;
+  product: HoneyProduct;
+  rotationY: number;
+  tiltZ?: number;
 };
 
-export function MobileHoneyCard({ product }: MobileHoneyCardProps) {
+export function MobileHoneyCard({
+  product,
+  rotationY,
+  tiltZ = 0,
+}: MobileHoneyCardProps) {
   const [showDetails, setShowDetails] = useState(false);
-  const href = product.href ?? "#shop";
-  const description = product.details[0]?.body ?? "";
+  const href = product.ctaUrl ?? "#shop";
+  const details = [
+    { label: "Aroma & Palate", body: product.aromaAndPalate },
+    {
+      label: "Texture & Crystallization",
+      body: product.textureAndCrystallization,
+    },
+    {
+      label: "Table & Culinary Ritual",
+      body: product.tableAndCulinaryRitual,
+    },
+  ];
 
   return (
     <article className="flex flex-col items-center bg-white px-6 py-12 text-center">
       <h3 className="font-belgan text-3xl font-bold text-neutral-900">
-        {product.title}
+        {product.name}
       </h3>
       <p className="mt-2 font-helvetica text-sm text-neutral-400">
         {product.subtitle}
@@ -30,18 +46,16 @@ export function MobileHoneyCard({ product }: MobileHoneyCardProps) {
         <button
           type="button"
           onClick={() => setShowDetails((open) => !open)}
-          className="relative aspect-[3/4] w-full max-w-[200px] overflow-hidden"
+          className="relative h-[300px] w-full max-w-[220px]"
           aria-pressed={showDetails}
           aria-label={
             showDetails ? "Hide product details" : "Show product details"
           }
         >
-          <Image
-            src={product.image.src}
-            alt={product.image.alt}
-            fill
-            className="object-contain"
-            sizes="200px"
+          <HoneyJar3D
+            product={product}
+            rotationY={rotationY}
+            tiltZ={tiltZ}
           />
         </button>
 
@@ -51,7 +65,7 @@ export function MobileHoneyCard({ product }: MobileHoneyCardProps) {
             onClick={() => setShowDetails(false)}
           >
             <dl className="flex w-full max-w-sm flex-col gap-4 text-left">
-              {product.details.map((detail) => (
+              {details.map((detail) => (
                 <div key={detail.label}>
                   <dt className="font-helvetica text-xs tracking-wide text-[#fafafa]/90">
                     {detail.label}
@@ -67,7 +81,7 @@ export function MobileHoneyCard({ product }: MobileHoneyCardProps) {
       </div>
 
       <p className="mt-10 max-w-sm font-helvetica text-sm leading-relaxed text-neutral-500">
-        {description}
+        {product.aromaAndPalate}
       </p>
 
       <Button

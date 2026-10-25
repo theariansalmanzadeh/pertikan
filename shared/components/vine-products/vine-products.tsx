@@ -1,21 +1,7 @@
-import { MobileVineCard } from "@/shared/components/vine-products/component/mobile-vine-card";
-import { VineCard } from "@/shared/components/vine-products/component/vine-card";
-import { vineProducts } from "@/shared/contant/vine";
+"use client";
+
+import { WineCollectionSection } from "@/shared/components/vine-products/wine-collection-section";
 
 export function VineProducts() {
-  return (
-    <section className="bg-white">
-      <div className="hidden flex-col py-16 sm:flex ">
-        {vineProducts.map((product) => (
-          <VineCard key={product.id} product={product} />
-        ))}
-      </div>
-
-      <div className="flex flex-col py-8 sm:hidden">
-        {vineProducts.map((product) => (
-          <MobileVineCard key={product.id} product={product} />
-        ))}
-      </div>
-    </section>
-  );
+  return <WineCollectionSection />;
 }

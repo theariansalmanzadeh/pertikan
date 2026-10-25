@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 
 import { Cta } from "@/shared/components/Cta";
 import { Features } from "@/shared/components/features";
-import { Footer } from "@/shared/components/footer";
-import { FounderQuote } from "@/shared/components/founder-quote";
 import { Hero } from "@/shared/components/hero";
 import { HoneyProducts } from "@/shared/components/honey-products/honey-products";
 import { VineProducts } from "@/shared/components/vine-products/vine-products";
@@ -43,7 +41,6 @@ export default function Home() {
         href="#shop"
       />
       <HoneyProducts />
-      {/* <FounderQuote /> */}
       <Cta
         eyebrow="Serving Rituals & Gastronomy"
         title={() => (
@@ -57,7 +54,6 @@ export default function Home() {
         description="Whether poured chilled as a luminous aperitif, paired beside aged alpine cheeses and spicy cured Burgenland ham, or savored slowly as an evening digestif, honey wine rewards unhurried table craft."
         href="#shop"
       />
-      <Footer />
     </div>
   );
 }

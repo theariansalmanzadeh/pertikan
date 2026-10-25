@@ -1,7 +1,5 @@
 import Image from "next/image";
 
-import { Navbar } from "@/shared/components/navbar";
-
 export function Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden">
@@ -14,7 +12,6 @@ export function Hero() {
         sizes="100vw"
       />
       <div className="absolute inset-0 bg-black/20" aria-hidden />
-      <Navbar />
     </section>
   );
 }

@@ -5,50 +5,55 @@ import { footerContact } from "@/shared/contant/footer";
 
 export function ContactUs() {
   return (
-    <section className="bg-white px-6 py-16 md:px-10 md:py-24 lg:px-14">
-      <div className="mx-auto grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16 lg:gap-24">
-        <div className="grid grid-cols-1 content-start gap-8">
-          <div className="grid grid-cols-1 gap-3">
-            <h1 className="font-belgan text-3xl font-bold text-neutral-900 md:text-4xl">
-              Contact Us
-            </h1>
-            <p className="font-helvetica text-sm leading-relaxed text-neutral-500 md:text-base">
-              We would love to hear from you — whether about our mead, honey, or
-              a visit to the apiary.
-            </p>
-          </div>
+    <section className="grid grid-cols-1 bg-white sm:grid-cols-2">
+      <section
+        aria-label="Apiary Contact Information"
+        className="flex flex-col justify-center border-b border-neutral-200 px-6 py-12 md:px-10 md:py-16 lg:border-r lg:border-b-0 lg:px-16 lg:py-[180px]"
+      >
+        <div className="max-w-[460px]">
+          <h1 className="mb-4 font-belgan text-[26px] leading-[1.15] text-neutral-900 md:text-[32px]">
+            From the Hive to Your Table.
+          </h1>
+          <p className="mb-7 border-b border-neutral-200 pb-7 font-helvetica text-[13.5px] leading-[1.68] text-neutral-400">
+            Whether you are curating a wine list, seeking private cellar
+            allocations of our 18-month aged Uhudler mead, or inquiring about
+            seasonal raw blossom honey, we welcome conversations with
+            sommeliers, hospitality partners, and private collectors.
+          </p>
 
-          <div className="border-t border-border" />
+          <address className="mb-4 font-helvetica text-sm leading-[1.65] text-neutral-800 not-italic">
+            {footerContact.addressLines.map((line) => (
+              <span key={line}>
+                {line}
+                <br />
+              </span>
+            ))}
+          </address>
 
-          <div className="grid grid-cols-1 gap-6 font-helvetica text-sm leading-relaxed text-neutral-700">
-            <div className="grid grid-cols-1 gap-1">
-              {footerContact.addressLines.map((line) => (
-                <p key={line}>{line}</p>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-1 gap-1">
-              {footerContact.phones.map((phone) => (
+          <div className="mb-4 font-helvetica text-sm leading-[1.65] text-neutral-800">
+            {footerContact.phones.map((phone) => (
+              <p key={phone}>
                 <a
-                  key={phone}
                   href={`tel:${phone.replace(/\s/g, "")}`}
                   className="transition-opacity hover:opacity-70"
                 >
                   {phone}
                 </a>
-              ))}
-            </div>
-
-            <a
-              href={footerContact.emailHref}
-              className="underline underline-offset-2 transition-opacity hover:opacity-70"
-            >
-              {footerContact.email}
-            </a>
+              </p>
+            ))}
           </div>
-        </div>
 
-        <div className="grid grid-cols-1 content-start gap-8">
+          <a
+            href={footerContact.emailHref}
+            className="font-helvetica text-sm text-neutral-800 underline underline-offset-4 transition-colors hover:text-neutral-900"
+          >
+            {footerContact.email}
+          </a>
+        </div>
+      </section>
+
+      <div className="flex flex-col justify-center px-6 py-12 md:px-10 md:py-16 lg:px-16 lg:py-[180px]">
+        <div className="grid max-w-[560px] grid-cols-1 content-start gap-8">
           <h2 className="font-belgan text-3xl font-bold text-neutral-900 md:text-4xl">
             Write to Us
           </h2>

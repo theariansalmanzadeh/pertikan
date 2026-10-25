@@ -1,114 +1,101 @@
-export type VineSpec = {
-  label: string;
-  value: string;
-};
-
 export type VineProduct = {
   id: string;
-  title: string;
+  name: string;
   subtitle: string;
   description: string;
-  tastingNotes: {
-    label: string;
-    body: string;
-  };
-  specs: VineSpec[];
-  image: {
-    src: string;
-    alt: string;
-  };
-  href: string;
+  tastingNotes: string;
+  maturation: string;
+  purityAndSulfites: string;
+  recommendedService: string;
+  glassColor: string;
+  liquidColor: string;
+  liquidGlowColor: string;
+  capsuleColor: string;
+  labelTint: string;
+  isSparkling: boolean;
+  ctaUrl: string;
 };
+
+/** @deprecated Prefer VineProduct — kept as alias for wine collection naming */
+export type WineProduct = VineProduct;
 
 export const vineProducts: VineProduct[] = [
   {
     id: "mitra",
-    title: "Mitra",
+    name: "Mitra",
     subtitle: "Honey Wine — The Original",
     description:
       "One of humanity's oldest alcoholic beverages, brewed according to an old recipe using fine honey from Pertikan's own apiary and pure water.",
-    tastingNotes: {
-      label: "Tasting Notes",
-      body: "Deep warm blossom honey on the nose, evolving into structured beeswax, dried meadow herbs, and a long, velvety amber finish developed through patient barrel rest.",
-    },
-    specs: [
-      {
-        label: "Maturation",
-        value: "15–18 Months Barrel Aged",
-      },
-      {
-        label: "Purity & Sulfites",
-        value: "Zero Chemical Additives · No Sulfites",
-      },
-      {
-        label: "Recommended Service",
-        value: "10–14 °C · Tulip White Wine or Digestif Stem",
-      },
-    ],
-    image: {
-      src: "/images/vine.png",
-      alt: "Mitra honey wine bottle",
-    },
-    href: "#shop",
+    tastingNotes:
+      "Deep warm blossom honey on the nose, evolving into structured beeswax, dried meadow herbs, and a long, velvety amber finish developed through patient barrel rest.",
+    maturation: "15–18 Months Barrel Aged",
+    purityAndSulfites: "Zero Chemical Additives · No Sulfites",
+    recommendedService: "10–14 °C · Tulip White Wine or Digestif Stem",
+    glassColor: "#1f260c",
+    liquidColor: "#3d4612",
+    liquidGlowColor: "#667022",
+    capsuleColor: "#252523",
+    labelTint: "#e3e0d6",
+    isSparkling: false,
+    ctaUrl: "#shop",
   },
   {
     id: "mitra-frizzante",
-    title: "Mitra Frizzante",
+    name: "Mitra Frizzante",
     subtitle: "Sparkling Honey Wine",
     description:
       "A refreshing, sparkling interpretation of traditional mead, crafted from fine honey and pure water, then refined with delicate carbonation.",
-    tastingNotes: {
-      label: "Tasting Notes",
-      body: "Golden honey warmth meets lively effervescence, with a delicate sweetness and a bright, refreshing finish.",
-    },
-    specs: [
-      {
-        label: "Maturation",
-        value: "15–18 Months Barrel Aged",
-      },
-      {
-        label: "Purity & Sulfites",
-        value: "Zero Chemical Additives · No Sulfites",
-      },
-      {
-        label: "Recommended Service",
-        value: "Well Chilled · Sparkling Wine Glass",
-      },
-    ],
-    image: {
-      src: "/images/vine.png",
-      alt: "Mitra Frizzante sparkling honey wine bottle",
-    },
-    href: "#shop",
+    tastingNotes:
+      "Golden honey warmth meets lively effervescence, with a delicate sweetness and a bright, refreshing finish.",
+    maturation: "15–18 Months Barrel Aged",
+    purityAndSulfites: "Zero Chemical Additives · No Sulfites",
+    recommendedService: "Well Chilled · Sparkling Wine Glass",
+    glassColor: "#1d240b",
+    liquidColor: "#444e15",
+    liquidGlowColor: "#737e28",
+    capsuleColor: "#232321",
+    labelTint: "#e5e2d9",
+    isSparkling: true,
+    ctaUrl: "#shop",
   },
   {
     id: "u-and-me",
-    title: "U&Me",
+    name: "U&Me",
     subtitle: "Uhudler & Met — Sweet & Wild",
     description:
-      "A meeting of wild Southern Burgenland Uhudler grapes and matured mead from Pertikan's apiary — sweet, aromatic, and distinctly of this land.",
-    tastingNotes: {
-      label: "Tasting Notes",
-      body: "Woodland strawberry and blackcurrant lift into matured honey wine, with a soft, lingering sweetness and a wild berry finish.",
-    },
-    specs: [
-      {
-        label: "Maturation",
-        value: "15 Months Matured Mead Base",
-      },
-      {
-        label: "Purity & Sulfites",
-        value: "Zero Chemical Additives · Natural Sulfites (Uhudler Only)",
-      },
-      {
-        label: "Recommended Service",
-        value: "10–12 °C · Universal Burgundy or Aromatic Wine Glass",
-      },
-    ],
-    image: {
-      src: "/images/vine.png",
-      alt: "U&Me Uhudler and Met bottle",
-    },
-    href: "#shop",
+      "A distinctive blend of wild Uhudler grapes and traditional mead from Pertikan's own apiary, both originating in the meadows and vineyards of Southern Burgenland.",
+    tastingNotes:
+      "Combines the wild, unmistakable woodland strawberry and blackcurrant berry-forward flavor of the authentic Uhudler grape with the gentle, rounded sweetness of 15-month matured honey wine.",
+    maturation: "15 Months Matured Mead Base",
+    purityAndSulfites: "Zero Chemical Additives · Natural Sulfites (Uhudler Only)",
+    recommendedService: "10–12 °C · Universal Burgundy or Aromatic Wine Glass",
+    glassColor: "#1e230b",
+    liquidColor: "#3b3c11",
+    liquidGlowColor: "#635c1e",
+    capsuleColor: "#252523",
+    labelTint: "#e2dfd5",
+    isSparkling: false,
+    ctaUrl: "#shop",
+  },
+  {
+    id: "u-and-me-frizzante",
+    name: "U&Me Frizzante",
+    subtitle: "Sparkling Uhudler & Met",
+    description:
+      "A refreshingly sparkling interpretation uniting the Southern Burgenland Uhudler grape and 15-month aged apiary mead.",
+    tastingNotes:
+      "Vibrant, fruity acidity meets delicate honey sweetness, lifted by fine, persistent perlage for a lively lightness on the palate.",
+    maturation: "15 Months Aged Apiary Mead",
+    purityAndSulfites: "Without Chemical Additives · Sulfites (Uhudler Component Only)",
+    recommendedService: "6–8 °C · Slender Flute or Sparkling Tulip Glass",
+    glassColor: "#1c220a",
+    liquidColor: "#404213",
+    liquidGlowColor: "#6b6522",
+    capsuleColor: "#242422",
+    labelTint: "#e4e1d7",
+    isSparkling: true,
+    ctaUrl: "#shop",
   },
 ];
+
+export const WINE_PRODUCTS = vineProducts;
