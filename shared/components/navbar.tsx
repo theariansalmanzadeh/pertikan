@@ -4,14 +4,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { MobileNavbar } from "@/shared/components/mobile-navbar";
+import { navLinks } from "@/shared/contant/nav";
 import { cn } from "@/lib/utils";
 import LiquidGlass from "liquid-glass-react";
-
-const navLinks = [
-  { href: "/about-us", label: "Our Story" },
-  { href: "#the-collection", label: "The Collection" },
-  { href: "#our-crafts", label: "Our Crafts" },
-] as const;
 
 type NavbarProps = {
   variant?: "overlay" | "light";

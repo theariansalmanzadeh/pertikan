@@ -12,13 +12,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/shared/components/ui/sheet";
+import { navLinks } from "@/shared/contant/nav";
 import { cn } from "@/lib/utils";
-
-const navLinks = [
-  { href: "/about-us", label: "Our Story" },
-  { href: "#the-collection", label: "The Collection" },
-  { href: "#our-crafts", label: "Our Crafts" },
-] as const;
 
 type MobileNavbarProps = {
   variant?: "overlay" | "light";
