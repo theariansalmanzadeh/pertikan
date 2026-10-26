@@ -5,19 +5,19 @@ import { motion, useInView } from "motion/react";
 
 const features = [
   {
-    label: "Awarded Excellence",
-    title: "Mead of the Year 2026",
-    description: "Mitra — Austria's Best Mead",
+    label: "Ausgezeichnete Qualität",
+    title: "Met des Jahres 2026",
+    description: "Mitra — Österreichs bester Met",
   },
   {
-    label: "Barrel Maturation",
-    title: "15 to 18 Months",
-    description: "Patient oak rest until full aroma",
+    label: "Fassreifung",
+    title: "15 bis 18 Monate",
+    description: "Geduldige Eichenreife bis zum vollen Aroma",
   },
   {
-    label: "Purity Standard",
-    title: "0% Chemical Additives",
-    description: "Zero sulfites in pure honey wine",
+    label: "Reinheitsstandard",
+    title: "0 % chemische Zusätze",
+    description: "Keine Sulfite im reinen Honigwein",
   },
 ] as const;
 

@@ -34,7 +34,7 @@ export function MobileNavbar({ variant = "overlay" }: MobileNavbarProps) {
           <SheetTrigger asChild>
             <button
               type="button"
-              aria-label="Open menu"
+              aria-label="Menü öffnen"
               className={cn(
                 "flex size-10 items-center justify-center",
                 isLight ? "text-neutral-900" : "text-[#fafafa]"

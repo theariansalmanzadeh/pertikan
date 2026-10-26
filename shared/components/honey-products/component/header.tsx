@@ -17,22 +17,23 @@ export function Header() {
     >
       <div className="col-span-1">
         <p className="font-helvetica text-[11px] font-medium tracking-[0.18em] text-neutral-400 uppercase">
-          The Apiary Collection
+          100% Südburgenland • Echte Imkerkunst
         </p>
         <h2 className="mt-3 font-belgan text-3xl font-bold leading-tight text-neutral-900 md:text-4xl lg:text-[2.75rem]">
-          Honey{" "}
-          <br className="hidden sm:block" />
-          Nature&apos;s Gold.
+          Honig –{" "}
+          <br className="hidden sm:block" /> Das Gold der Natur
         </h2>
       </div>
 
       <div className="flex items-end sm:col-span-2 sm:col-start-3">
-        <p className="max-w-xl font-helvetica text-sm leading-relaxed text-neutral-400 md:text-[0.9375rem] md:leading-7">
-          100% unadulterated beekeeping artistry directly from Southern
-          Burgenland. Before a single drop of mead is fermented, our bees gather
-          the seasonal nectar of meadows, robinia groves, and linden avenues
-          around Grosspetersdorf.
-        </p>
+        <div className="max-w-xl space-y-4 font-helvetica text-sm leading-relaxed text-neutral-400 md:text-[0.9375rem] md:leading-7">
+          <p>
+            Entdecken Sie die Vielfalt echter Imkerkunst. Ob samtmilder Genuss am Morgenbrot, flüssiges Gold im Tee oder schlichtweg pur mit aromatisch-frischen Noten – unser Honig steht für 100 % unverfälschte Qualität direkt aus dem Südburgenland.
+          </p>
+          <p>
+            Unsere Honigsorten Cremehonig, Akazienhonig, Lindenhonig und Blütenhonig sind je nach Bedarf im klassischen Glas mit 250 g, 500 g, 900 g oder 1 kg sowie für Großverbraucher im praktischen Hobbock mit 10 kg oder 40 kg erhältlich.
+          </p>
+        </div>
       </div>
     </motion.header>
   );

@@ -11,37 +11,48 @@ export type HoneyProduct = {
   honeyHighlightColor: string;
   clarity: number;
   ctaUrl: string;
+  /** When set, the photo replaces the 3D jar on the card. */
+  imageSrc?: string;
+  imageAlt?: string;
 };
+
+// Placeholder photo, used on the first card only until per-product images exist.
+const HONEY_IMAGE = {
+  src: "/images/honey-sortiment.webp",
+  alt: "Pertikan Honig in Gläsern verschiedener Größen",
+} as const;
 
 export const HONEY_PRODUCTS: HoneyProduct[] = [
   {
     id: "creamed-honey",
-    name: "Creamed Honey",
-    mobileName: "Creamed Honey",
-    subtitle: "Spring & Early Summer Meadow Harvest",
+    name: "Cremehonig",
+    mobileName: "Cremehonig",
+    subtitle: "Wiesenernte im Frühling & Frühsommer",
     aromaAndPalate:
-      "Finely whipped through gentle mechanical stirring for a velvety, spreadable consistency. Delicate orchard blossom sweetness that melts effortlessly on the tongue.",
+      "Durch sanftes mechanisches Rühren fein aufgeschlagen für eine samtige, streichzarte Konsistenz. Zarte Süße von Obstbaumblüten, die mühelos auf der Zunge zergeht.",
     textureAndCrystallization:
-      "Naturally fine, stable micro-crystalline texture; never drips.",
+      "Von Natur aus feine, stabile mikrokristalline Textur; tropft nie.",
     tableAndCulinaryRitual:
-      "Warm sourdough crust, alpine butter, soft ripened cheeses, and morning herbal infusions.",
+      "Warme Sauerteigkruste, Almbutter, weichreifer Käse und morgendliche Kräutertees.",
     honeyColor: "#b55e10",
     honeyDeepColor: "#7c3905",
     honeyHighlightColor: "#df8c2e",
     clarity: 0.35,
     ctaUrl: "#shop",
+    imageSrc: HONEY_IMAGE.src,
+    imageAlt: HONEY_IMAGE.alt,
   },
   {
     id: "robinia-honey",
-    name: "Robinia Honey",
-    mobileName: "Robinia Honey",
-    subtitle: "Late Spring Acacia Blossom",
+    name: "Akazienhonig",
+    mobileName: "Akazienhonig",
+    subtitle: "Akazienblüte im Spätfrühling",
     aromaAndPalate:
-      "Clear floral lift with soft vanilla tones and a long, luminous sweetness drawn from robinia groves around Grosspetersdorf.",
+      "Klare blumige Frische mit sanften Vanilletönen und einer langen, leuchtenden Süße aus den Robinienhainen rund um Grosspetersdorf.",
     textureAndCrystallization:
-      "Slow to crystallize; remains elegantly fluid with a silk-fine body.",
+      "Kristallisiert langsam; bleibt elegant flüssig mit seidenfeinem Körper.",
     tableAndCulinaryRitual:
-      "Fresh goat cheese, lemon zest pastry, and pale herbal teas.",
+      "Frischer Ziegenkäse, Gebäck mit Zitronenabrieb und helle Kräutertees.",
     honeyColor: "#c26a14",
     honeyDeepColor: "#863f06",
     honeyHighlightColor: "#eb9938",
@@ -50,19 +61,33 @@ export const HONEY_PRODUCTS: HoneyProduct[] = [
   },
   {
     id: "linden-honey",
-    name: "Linden Honey",
-    mobileName: "Linden Honey",
-    subtitle: "Midsummer Linden Avenues",
+    name: "Lindenhonig",
+    mobileName: "Lindenhonig",
+    subtitle: "Lindenalleen im Hochsommer",
     aromaAndPalate:
-      "Minted blossom and gentle menthol freshness, finishing with warm amber depth from linden avenues at peak bloom.",
+      "Minzige Blüte und sanfte Mentholfrische, im Abgang warme Bernsteintiefe aus Lindenalleen in voller Blüte.",
     textureAndCrystallization:
-      "Medium-fine crystals that set into a soft, spoonable set without graininess.",
+      "Mittelfeine Kristalle, die zu einer weichen, löffelbaren Konsistenz ohne Körnigkeit festwerden.",
     tableAndCulinaryRitual:
-      "Aged alpine cheese, dark rye, and evening digestif pairings.",
+      "Gereifter Almkäse, dunkles Roggenbrot und ein abendlicher Digestif.",
     honeyColor: "#ac560d",
     honeyDeepColor: "#733304",
     honeyHighlightColor: "#d68227",
     clarity: 0.6,
+    ctaUrl: "#shop",
+  },
+  {
+    id: "blossom-honey",
+    name: "Blütenhonig",
+    mobileName: "Blütenhonig",
+    subtitle: "",
+    aromaAndPalate: "",
+    textureAndCrystallization: "",
+    tableAndCulinaryRitual: "",
+    honeyColor: "#b8650f",
+    honeyDeepColor: "#7a3d06",
+    honeyHighlightColor: "#dc8a2c",
+    clarity: 0.5,
     ctaUrl: "#shop",
   },
 ];

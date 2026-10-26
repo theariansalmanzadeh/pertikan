@@ -1,3 +1,12 @@
+export type WineVariant = {
+  /** Bottle size shown on the size chip, e.g. "0,75 L". */
+  size: string;
+  imageSrc: string;
+  imageAlt: string;
+  /** Shopify product page for exactly this size. */
+  shopifyUrl: string;
+};
+
 export type VineProduct = {
   id: string;
   name: string;
@@ -13,88 +22,136 @@ export type VineProduct = {
   capsuleColor: string;
   labelTint: string;
   isSparkling: boolean;
-  ctaUrl: string;
+  /** One entry per bottle size; the first one is selected by default. */
+  variants: WineVariant[];
 };
 
 /** @deprecated Prefer VineProduct — kept as alias for wine collection naming */
 export type WineProduct = VineProduct;
 
+// TODO: replace with the real Shopify product URL of each size.
+const SHOPIFY_PLACEHOLDER_URL = "#shop";
+
 export const vineProducts: VineProduct[] = [
   {
     id: "mitra",
     name: "Mitra",
-    subtitle: "Honey Wine — The Original",
+    subtitle: "Honigwein – Das Original",
     description:
-      "One of humanity's oldest alcoholic beverages, brewed according to an old recipe using fine honey from Pertikan's own apiary and pure water.",
+      "Met (Honigwein) ist eines der ältesten alkoholischen Getränke (13% Vol.) der Menschheit. Unser Met wird nach alter Rezeptur aus edlem Honig und reinem Wasser gebraut.",
     tastingNotes:
-      "Deep warm blossom honey on the nose, evolving into structured beeswax, dried meadow herbs, and a long, velvety amber finish developed through patient barrel rest.",
-    maturation: "15–18 Months Barrel Aged",
-    purityAndSulfites: "Zero Chemical Additives · No Sulfites",
-    recommendedService: "10–14 °C · Tulip White Wine or Digestif Stem",
+      "In der Nase tiefer, warmer Blütenhonig, der sich zu strukturiertem Bienenwachs und getrockneten Wiesenkräutern entfaltet – gefolgt von einem langen, samtigen Bernsteinabgang durch geduldige Fassreife.",
+    maturation: "Ca. 15 bis 18 Monate Reife im Fass",
+    purityAndSulfites: "Keine chemischen Zusätze oder Sulfite",
+    recommendedService:
+      "Aperitif, Digestif oder Dessertwein · zu Käseplatten und würzigem Schinken",
     glassColor: "#1f260c",
     liquidColor: "#3d4612",
     liquidGlowColor: "#667022",
     capsuleColor: "#252523",
     labelTint: "#e3e0d6",
     isSparkling: false,
-    ctaUrl: "#shop",
+    variants: [
+      {
+        size: "0,75 L",
+        imageSrc: "/images/wine-mitra-075l.jpg",
+        imageAlt: "Flasche Mitra Honigwein – Das Original, 0,75 Liter",
+        shopifyUrl: SHOPIFY_PLACEHOLDER_URL,
+      },
+      {
+        size: "0,5 L",
+        imageSrc: "/images/wine-mitra-05l.jpg",
+        imageAlt: "Flasche Mitra Honigwein – Das Original, 0,5 Liter",
+        shopifyUrl: SHOPIFY_PLACEHOLDER_URL,
+      },
+    ],
   },
   {
     id: "mitra-frizzante",
     name: "Mitra Frizzante",
-    subtitle: "Sparkling Honey Wine",
+    subtitle: "Prickelnder Honigwein",
     description:
-      "A refreshing, sparkling interpretation of traditional mead, crafted from fine honey and pure water, then refined with delicate carbonation.",
+      "Edler Honig, reines Wasser und 15 bis 18 Monate Fassreife – veredelt mit spritzig-feiner Kohlensäure. Unser mehrfach prämiertes Qualitätsprodukt präsentiert sich als erfrischender Frizzante mit 13% Vol.",
     tastingNotes:
-      "Golden honey warmth meets lively effervescence, with a delicate sweetness and a bright, refreshing finish.",
-    maturation: "15–18 Months Barrel Aged",
-    purityAndSulfites: "Zero Chemical Additives · No Sulfites",
-    recommendedService: "Well Chilled · Sparkling Wine Glass",
+      "Goldene Honigwärme trifft auf lebendiges Prickeln, mit zarter Süße und frischem, belebendem Abgang.",
+    maturation: "15 bis 18 Monate Fassreife",
+    purityAndSulfites: "100 % natürlich · Keine chemischen Zusätze oder Sulfite",
+    recommendedService:
+      "Gut gekühlt · prickelnder Aperitif oder zu Käseplatten und würzigem Schinken",
     glassColor: "#1d240b",
     liquidColor: "#444e15",
     liquidGlowColor: "#737e28",
     capsuleColor: "#232321",
     labelTint: "#e5e2d9",
     isSparkling: true,
-    ctaUrl: "#shop",
+    variants: [
+      {
+        size: "0,75 L",
+        imageSrc: "/images/wine-mitra-frizzante.jpg",
+        imageAlt: "Flasche Mitra Honigwein Frizzante, 0,75 Liter",
+        shopifyUrl: SHOPIFY_PLACEHOLDER_URL,
+      },
+    ],
   },
   {
     id: "u-and-me",
     name: "U&Me",
-    subtitle: "Uhudler & Met — Sweet & Wild",
+    subtitle: "Uhudler & Met – Sweet & Wild",
     description:
-      "A distinctive blend of wild Uhudler grapes and traditional mead from Pertikan's own apiary, both originating in the meadows and vineyards of Southern Burgenland.",
+      "Unser U&ME ist eine Kreation aus Uhudler und Met (Honigwein). Der Uhudler – eine wilde Rebsorte mit ihrem typischen Beerengeschmack – sowie unser traditionell hergestellter Met aus dem Honig der eigenen Imkerei stammen beide aus dem Südburgenland.",
     tastingNotes:
-      "Combines the wild, unmistakable woodland strawberry and blackcurrant berry-forward flavor of the authentic Uhudler grape with the gentle, rounded sweetness of 15-month matured honey wine.",
-    maturation: "15 Months Matured Mead Base",
-    purityAndSulfites: "Zero Chemical Additives · Natural Sulfites (Uhudler Only)",
-    recommendedService: "10–12 °C · Universal Burgundy or Aromatic Wine Glass",
+      "Wir vereinen mit diesem Produkt (13% Vol.) den wilden, fruchtigen Geschmack des Uhudlers mit dem lieblichen Geschmack unseres Mets.",
+    maturation: "Met ca. 15 Monate gereift",
+    purityAndSulfites: "Keine chemischen Zusätze · Sulfite nur im Uhudler",
+    recommendedService:
+      "10–12 °C · Universal-Burgunderglas oder Aromaglas",
     glassColor: "#1e230b",
     liquidColor: "#3b3c11",
     liquidGlowColor: "#635c1e",
     capsuleColor: "#252523",
     labelTint: "#e2dfd5",
     isSparkling: false,
-    ctaUrl: "#shop",
+    variants: [
+      {
+        size: "0,75 L",
+        imageSrc: "/images/wine-u-and-me-075l.jpg",
+        imageAlt: "Flasche U&Me Sweet & Wild, Uhudler & Met, 0,75 Liter",
+        shopifyUrl: SHOPIFY_PLACEHOLDER_URL,
+      },
+      {
+        size: "0,5 L",
+        imageSrc: "/images/wine-u-and-me-05l.jpg",
+        imageAlt: "Flasche U&Me Sweet & Wild, Uhudler & Met, 0,5 Liter",
+        shopifyUrl: SHOPIFY_PLACEHOLDER_URL,
+      },
+    ],
   },
   {
     id: "u-and-me-frizzante",
     name: "U&Me Frizzante",
-    subtitle: "Sparkling Uhudler & Met",
+    subtitle: "Prickelnder Uhudler & Met",
     description:
-      "A refreshingly sparkling interpretation uniting the Southern Burgenland Uhudler grape and 15-month aged apiary mead.",
+      "U&ME Frizzante ist eine erfrischend prickelnde Kreation aus Südburgenländer Uhudler und feinem Met (Honigwein). Echter Uhudler mit intensivem Beerenaroma trifft auf Met aus der eigenen Imkerei.",
     tastingNotes:
-      "Vibrant, fruity acidity meets delicate honey sweetness, lifted by fine, persistent perlage for a lively lightness on the palate.",
-    maturation: "15 Months Aged Apiary Mead",
-    purityAndSulfites: "Without Chemical Additives · Sulfites (Uhudler Component Only)",
-    recommendedService: "6–8 °C · Slender Flute or Sparkling Tulip Glass",
+      "In diesem Frizzante (13% Vol.) verschmelzen die wilde, fruchtige Säure des Uhudlers und die liebliche Süße des 15 Monate gereiften Mets zu einer harmonischen Einheit.",
+    maturation: "Met 15 Monate gereift",
+    purityAndSulfites: "Keine chemischen Zusätze · Sulfite nur im Uhudler",
+    recommendedService:
+      "6–8 °C · Schlanke Flöte oder Sekt-Tulpenglas",
     glassColor: "#1c220a",
     liquidColor: "#404213",
     liquidGlowColor: "#6b6522",
     capsuleColor: "#242422",
     labelTint: "#e4e1d7",
     isSparkling: true,
-    ctaUrl: "#shop",
+    variants: [
+      {
+        size: "0,75 L",
+        imageSrc: "/images/wine-u-and-me-frizzante.jpg",
+        imageAlt: "Flasche U&Me Frizzante, Uhudler & Met, 0,75 Liter",
+        shopifyUrl: SHOPIFY_PLACEHOLDER_URL,
+      },
+    ],
   },
 ];
 

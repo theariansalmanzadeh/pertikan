@@ -504,7 +504,7 @@ export function HoneyJar3D({
       className={`relative w-full h-full select-none ${className}`}
       data-testid="honey-jar-3d"
       data-product-id={product.id}
-      aria-label={`3D model of ${product.name} jar`}
+      aria-label={`3D-Modell: ${product.name}-Glas`}
       role="img"
     />
   );

@@ -3,17 +3,17 @@ import type { Metadata } from "next";
 import { CollectionsSection } from "@/shared/components/collections/collections-section";
 
 export const metadata: Metadata = {
-  title: "Collections",
+  title: "Kollektionen",
   description:
-    "Shop Pertikan Cellar & Apiary Editions — aged mead, raw blossom honey, propolis tropfen, and hand-poured beeswax candles from Southern Burgenland.",
+    "Entdecken Sie die Keller- & Imkerei-Editionen von Pertikan — gereifter Met, roher Blütenhonig, Propolis Tropfen und handgegossene Bienenwachskerzen aus dem Südburgenland.",
   keywords: [
-    "Pertikan collections",
-    "mead shop",
-    "Uhudler mead",
-    "raw honey",
-    "propolis tropfen",
-    "beeswax candles",
-    "Burgenland wine",
+    "Pertikan Kollektionen",
+    "Met Shop",
+    "Uhudler Met",
+    "Roher Honig",
+    "Propolis Tropfen",
+    "Bienenwachskerzen",
+    "Burgenländer Wein",
   ],
 };
 

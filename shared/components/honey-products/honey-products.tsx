@@ -3,7 +3,7 @@ import { ProductCards } from "@/shared/components/honey-products/component/produ
 
 export function HoneyProducts() {
   return (
-    <section className="bg-white">
+    <section id="honig" className="bg-white">
       <Header />
       <div className="pb-16">
         <ProductCards />

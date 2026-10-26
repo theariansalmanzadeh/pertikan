@@ -24,7 +24,7 @@ export function CollectionsFilter({
       <div className="flex flex-col items-stretch gap-4 md:flex-row md:items-center md:justify-between md:gap-8">
         <div
           role="tablist"
-          aria-label="Collection categories"
+          aria-label="Kollektionskategorien"
           className="flex flex-wrap items-center gap-2 md:flex-nowrap"
         >
           {collectionFilters.map((filter) => {
@@ -50,13 +50,13 @@ export function CollectionsFilter({
         </div>
 
         <label className="block w-full shrink-0 md:w-[300px]">
-          <span className="sr-only">Filter by tasting note or edition</span>
+          <span className="sr-only">Nach Verkostungsnotiz oder Edition filtern</span>
         </label>
         <input
           type="search"
           value={query}
           onChange={(e) => onQueryChange(e.target.value)}
-          placeholder="Filter by tasting note or edition..."
+          placeholder="Nach Verkostungsnotiz oder Edition filtern..."
           className="h-9 w-[60vw] md:w-full rounded-full border border-neutral-200 bg-white px-5 font-helvetica text-sm text-neutral-900 outline-none placeholder:text-neutral-400 focus:border-neutral-400"
         />
       </div>

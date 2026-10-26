@@ -1,25 +1,24 @@
 "use client";
 
-import { WineBottle3D } from "@/shared/components/vine-products/wine-bottle-3d";
+import { WineBottlePhoto } from "@/shared/components/vine-products/wine-bottle-photo";
+import { WineSizeChips } from "@/shared/components/vine-products/wine-size-chips";
 import type { WineProduct } from "@/shared/contant/vine";
 import type { ScrollSequenceState } from "@/shared/utils/scroll-math";
 
 type MobileWineShowcaseProps = {
   products: WineProduct[];
-  activeProduct: WineProduct;
   seqState: ScrollSequenceState;
-  isDesktop: boolean;
+  selectedSizes: Record<string, number>;
   onSelectIndex: (index: number) => void;
-  onBuyProduct: (product: WineProduct) => void;
+  onSelectSize: (productId: string, sizeIndex: number) => void;
 };
 
 export function MobileWineShowcase({
   products,
-  activeProduct,
   seqState,
-  isDesktop,
+  selectedSizes,
   onSelectIndex,
-  onBuyProduct,
+  onSelectSize,
 }: MobileWineShowcaseProps) {
   return (
     <div className="flex flex-1 flex-col justify-between border-y border-neutral-200 px-6 py-7 md:hidden">
@@ -31,7 +30,7 @@ export function MobileWineShowcase({
               <button
                 key={wine.id}
                 type="button"
-                aria-label={`Select ${wine.name}`}
+                aria-label={`${wine.name} auswählen`}
                 onClick={() => onSelectIndex(idx)}
                 style={{ width: `${Math.round(itemState.indicatorWidth)}px` }}
                 className={`h-1 rounded-full transition-colors ${
@@ -68,21 +67,20 @@ export function MobileWineShowcase({
       </div>
 
       <div className="relative my-2 flex h-[350px] w-full items-center justify-center">
-        <div className="h-full w-[240px]">
-          {!isDesktop ? (
-            <WineBottle3D
-              product={activeProduct}
-              rotationY={seqState.rotationY}
-              tiltZ={seqState.tiltZ}
-              depthOffset={seqState.depthOffset}
-            />
-          ) : null}
-        </div>
+        <WineBottlePhoto
+          products={products}
+          seqState={seqState}
+          selectedSizes={selectedSizes}
+          sizes="260px"
+          className="w-[260px] rounded-lg"
+        />
       </div>
 
-      <div className="relative h-[132px] w-full">
+      <div className="relative h-[200px] w-full">
         {products.map((wine, idx) => {
           const itemState = seqState.items[idx];
+          const selected = selectedSizes[wine.id] ?? 0;
+          const variant = wine.variants[selected] ?? wine.variants[0];
           return (
             <div
               key={wine.id}
@@ -96,13 +94,18 @@ export function MobileWineShowcase({
               <p className="mb-4 px-2 font-helvetica text-sm leading-relaxed text-neutral-600">
                 {wine.description}
               </p>
-              <button
-                type="button"
-                onClick={() => onBuyProduct(wine)}
-                className="h-11 w-full cursor-pointer rounded-full bg-neutral-900 font-helvetica text-sm font-medium tracking-wide text-white uppercase transition-colors hover:bg-neutral-800"
+              <WineSizeChips
+                wine={wine}
+                selected={selected}
+                onSelect={(sizeIndex) => onSelectSize(wine.id, sizeIndex)}
+                className="mb-3 justify-center"
+              />
+              <a
+                href={variant.shopifyUrl}
+                className="flex h-11 w-full items-center justify-center rounded-full bg-neutral-900 font-helvetica text-sm font-medium tracking-wide text-white uppercase transition-colors hover:bg-neutral-800"
               >
-                Buy Now
-              </button>
+                Jetzt kaufen
+              </a>
             </div>
           );
         })}

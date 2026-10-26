@@ -3,25 +3,23 @@
 import { useEffect, useRef, useState } from "react";
 
 import { MobileWineShowcase } from "@/shared/components/vine-products/mobile-wine-showcase";
-import { WineBottle3D } from "@/shared/components/vine-products/wine-bottle-3d";
-import { WINE_PRODUCTS, type WineProduct } from "@/shared/contant/vine";
+import { WineBottlePhoto } from "@/shared/components/vine-products/wine-bottle-photo";
+import { WineSizeChips } from "@/shared/components/vine-products/wine-size-chips";
+import { WINE_PRODUCTS } from "@/shared/contant/vine";
 import {
   calculateStickyProgress,
   calculateTargetScrollYForIndex,
   computeScrollSequenceState,
 } from "@/shared/utils/scroll-math";
 
-type WineCollectionSectionProps = {
-  onBuyProduct?: (product: WineProduct) => void;
-};
-
-export function WineCollectionSection({
-  onBuyProduct,
-}: WineCollectionSectionProps) {
+export function WineCollectionSection() {
   const stickyTrackRef = useRef<HTMLDivElement | null>(null);
   const [rawProgress, setRawProgress] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(true);
+  // Selected bottle size (index into wine.variants) per product id.
+  const [selectedSizes, setSelectedSizes] = useState<Record<string, number>>(
+    {}
+  );
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -29,7 +27,6 @@ export function WineCollectionSection({
     mq.addEventListener("change", onChange);
     const rafId = requestAnimationFrame(() => {
       setReducedMotion(mq.matches);
-      setIsDesktop(window.innerWidth >= 768);
     });
     return () => {
       cancelAnimationFrame(rafId);
@@ -44,7 +41,6 @@ export function WineCollectionSection({
       if (!track) return;
       const rect = track.getBoundingClientRect();
       const vh = window.innerHeight || 900;
-      setIsDesktop((window.innerWidth || 1440) >= 768);
       const nextProgress = calculateStickyProgress(rect.top, rect.height, vh);
       setRawProgress((prev) =>
         Math.abs(prev - nextProgress) > 0.0005 ? nextProgress : prev
@@ -91,38 +87,29 @@ export function WineCollectionSection({
     });
   };
 
-  const handleBuyProduct = (product: WineProduct) => {
-    if (onBuyProduct) {
-      onBuyProduct(product);
-      return;
-    }
-    window.open(product.ctaUrl || "#shop", "_self");
+  const handleSelectSize = (productId: string, sizeIndex: number) => {
+    setSelectedSizes((prev) => ({ ...prev, [productId]: sizeIndex }));
   };
 
   return (
     <section
       id="wine-collection"
-      aria-label="The Wine Collection"
+      aria-label="Die Weinkollektion"
       className="w-full bg-white"
     >
       <div className="px-6 pt-14 pb-9 md:px-16 md:pt-16 md:pb-7">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="text-center md:text-left">
             <p className="mb-3 font-helvetica text-[11px] tracking-[0.04em] text-neutral-400 uppercase">
-              The Wine Collection
+              Die Weinkollektion
             </p>
             <h2 className="font-belgan text-4xl leading-[1.08] text-neutral-900 md:text-[44px]">
-              Three expressions.
-              <br />
-              One philosophy.
+              Drei Ausdrucksformen. <br /> Eine Philosophie.
             </h2>
           </div>
 
           <p className="mx-auto max-w-[340px] text-center font-helvetica text-[13px] leading-[1.6] text-neutral-500 md:mx-0 md:max-w-[540px] md:pb-1 md:text-left">
-            Every bottle begins in our Southern Burgenland apiary. Matured
-            patiently for 15 to 18 months without chemical additives, our three
-            alcoholic honey wines honor both ancient fermentation and the
-            untamed character of regional Uhudler grapes.
+            Jede Flasche beginnt in unserer Imkerei im Südburgenland. Geduldig 15 bis 18 Monate ohne chemische Zusätze gereift, ehren unsere drei alkoholischen Honigweine sowohl die uralte Gärung als auch den ungezähmten Charakter der regionalen Uhudler-Trauben.
           </p>
         </div>
       </div>
@@ -132,13 +119,14 @@ export function WineCollectionSection({
         data-testid="wine-sticky-track"
         data-active-wine={activeProduct.id}
         data-active-index={seqState.activeIndex}
-        className="relative h-[340vh] w-full"
+        style={{ height: `${WINE_PRODUCTS.length * 85}vh` }}
+        className="relative w-full"
       >
         <div className="sticky top-0 flex min-h-screen w-full flex-col justify-between overflow-hidden bg-white md:h-screen">
           <div className="hidden shrink-0 items-center justify-center border-b border-neutral-200 pt-4 pb-5 md:flex">
             <div
               role="tablist"
-              aria-label="Wine Collection Expressions"
+              aria-label="Weinkollektion"
               className="flex items-center gap-2"
             >
               {WINE_PRODUCTS.map((wine, idx) => {
@@ -149,7 +137,7 @@ export function WineCollectionSection({
                     type="button"
                     role="tab"
                     aria-selected={itemState.isActive}
-                    aria-label={`Show ${wine.name}`}
+                    aria-label={`${wine.name} anzeigen`}
                     onClick={() => handleSelectIndex(idx)}
                     style={{ width: `${Math.round(itemState.indicatorWidth)}px` }}
                     className={`h-1 cursor-pointer rounded-full transition-colors duration-150 ${
@@ -164,17 +152,13 @@ export function WineCollectionSection({
           </div>
 
           <div className="hidden min-h-0 flex-1 border-b border-neutral-200 md:grid md:grid-cols-2">
-            <div className="relative flex h-full items-center justify-center border-r border-neutral-200 px-12 py-8">
-              <div className="h-full max-h-[560px] w-full max-w-[380px]">
-                {isDesktop ? (
-                  <WineBottle3D
-                    product={activeProduct}
-                    rotationY={seqState.rotationY}
-                    tiltZ={seqState.tiltZ}
-                    depthOffset={seqState.depthOffset}
-                  />
-                ) : null}
-              </div>
+            <div className="relative h-full border-r border-neutral-200">
+              <WineBottlePhoto
+                products={WINE_PRODUCTS}
+                seqState={seqState}
+                selectedSizes={selectedSizes}
+                sizes="50vw"
+              />
             </div>
 
             <div className="relative flex h-full items-center p-6 sm:p-12 lg:p-16">
@@ -182,6 +166,8 @@ export function WineCollectionSection({
                 {WINE_PRODUCTS.map((wine, idx) => {
                   const itemState = seqState.items[idx];
                   const visible = itemState.opacity > 0.01;
+                  const selected = selectedSizes[wine.id] ?? 0;
+                  const variant = wine.variants[selected] ?? wine.variants[0];
                   return (
                     <article
                       key={wine.id}
@@ -207,7 +193,7 @@ export function WineCollectionSection({
 
                       <div className="mt-8">
                         <p className="font-helvetica text-sm text-neutral-400">
-                          Tasting Notes
+                          Verkostungsnotizen
                         </p>
                         <p className="mt-2 font-helvetica text-sm leading-relaxed text-neutral-900">
                           {wine.tastingNotes}
@@ -217,7 +203,7 @@ export function WineCollectionSection({
                       <div className="mt-8 border-t border-neutral-200">
                         <div className="flex flex-col gap-1 border-b border-neutral-200 py-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
                           <span className="shrink-0 font-helvetica text-base text-neutral-400">
-                            Maturation
+                            Reifung
                           </span>
                           <span className="font-helvetica text-base text-neutral-900 sm:text-right">
                             {wine.maturation}
@@ -225,7 +211,7 @@ export function WineCollectionSection({
                         </div>
                         <div className="flex flex-col gap-1 border-b border-neutral-200 py-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
                           <span className="shrink-0 font-helvetica text-base text-neutral-400">
-                            Purity &amp; Sulfites
+                            Reinheit &amp; Sulfite
                           </span>
                           <span className="font-helvetica text-base text-neutral-900 sm:text-right">
                             {wine.purityAndSulfites}
@@ -233,7 +219,7 @@ export function WineCollectionSection({
                         </div>
                         <div className="flex flex-col gap-1 border-b border-neutral-200 py-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
                           <span className="shrink-0 font-helvetica text-base text-neutral-400">
-                            Recommended Service
+                            Serviervorschlag
                           </span>
                           <span className="font-helvetica text-base text-neutral-900 sm:text-right">
                             {wine.recommendedService}
@@ -241,13 +227,22 @@ export function WineCollectionSection({
                         </div>
                       </div>
 
-                      <button
-                        type="button"
-                        onClick={() => handleBuyProduct(wine)}
-                        className="mt-8 h-11 w-full shrink-0 cursor-pointer rounded-full bg-neutral-900 font-helvetica text-sm font-medium tracking-wide text-white uppercase transition-colors hover:bg-neutral-800"
+                      <WineSizeChips
+                        wine={wine}
+                        selected={selected}
+                        onSelect={(sizeIndex) =>
+                          handleSelectSize(wine.id, sizeIndex)
+                        }
+                        className="mt-6"
+                      />
+
+                      <a
+                        href={variant.shopifyUrl}
+                        tabIndex={itemState.isActive ? 0 : -1}
+                        className="mt-4 flex h-11 w-full shrink-0 items-center justify-center rounded-full bg-neutral-900 font-helvetica text-sm font-medium tracking-wide text-white uppercase transition-colors hover:bg-neutral-800"
                       >
-                        Buy Now
-                      </button>
+                        Jetzt kaufen
+                      </a>
                     </article>
                   );
                 })}
@@ -257,11 +252,10 @@ export function WineCollectionSection({
 
           <MobileWineShowcase
             products={WINE_PRODUCTS}
-            activeProduct={activeProduct}
             seqState={seqState}
-            isDesktop={isDesktop}
+            selectedSizes={selectedSizes}
             onSelectIndex={handleSelectIndex}
-            onBuyProduct={handleBuyProduct}
+            onSelectSize={handleSelectSize}
           />
         </div>
       </div>

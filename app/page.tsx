@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { Cta } from "@/shared/components/Cta";
 import { Features } from "@/shared/components/features";
+import { HomeEventsSection } from "@/shared/components/events/home-events-section";
 import { Hero } from "@/shared/components/hero";
 import { HoneyProducts } from "@/shared/components/honey-products/honey-products";
 import { VineProducts } from "@/shared/components/vine-products/vine-products";
@@ -9,19 +10,19 @@ import { Testimonial } from "@/shared/components/testimonial";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Pertikan | Craft Mead & Wine Shop",
+    absolute: "Pertikan | Handwerklicher Met & Wein Shop",
   },
   description:
-    "Discover Pertikan's online wine shop — award-winning mead, barrel-aged honey wine, and pure honey crafted without chemical additives. Shop the collection.",
+    "Entdecken Sie den Online-Weinshop von Pertikan — preisgekrönter Met, im Fass gereifter Honigwein und reiner Honig ohne chemische Zusätze. Jetzt die Kollektion entdecken.",
   keywords: [
-    "Pertikan wine shop",
-    "buy mead online",
-    "honey wine for sale",
-    "Mead of the Year",
-    "barrel aged mead",
-    "sulfite free wine",
-    "Austrian craft wine",
-    "wine ecommerce",
+    "Pertikan Weinshop",
+    "Met online kaufen",
+    "Honigwein kaufen",
+    "Met des Jahres",
+    "Fassgereifter Met",
+    "Sulfitfreier Wein",
+    "Österreichischer Craft-Wein",
+    "Wein Onlineshop",
   ],
 };
 
@@ -30,29 +31,30 @@ export default function Home() {
     <div className="flex flex-1 flex-col">
       <Hero />
       <Features />
+      <HomeEventsSection />
       <VineProducts />
       <Cta
-        eyebrow="Serving Rituals & Gastronomy"
+        eyebrow="Genussrituale & Gastronomie"
         title={() => (
           <>
-            <span className="text-neutral-900">Made for moments worth keeping.</span>
+            <span className="text-neutral-900">Gemacht für Momente, die bleiben.</span>
           </>
         )}
-        description="Whether poured chilled as a luminous aperitif, paired beside aged alpine cheeses and spicy cured Burgenland ham, or savored slowly as an evening digestif, honey wine rewards unhurried table craft."
+        description="Ob gut gekühlt als leuchtender Aperitif, zu gereiftem Almkäse und würzigem burgenländischem Schinken oder langsam genossen als abendlicher Digestif — Honigwein belohnt eine Tischkultur ohne Eile."
         href="#shop"
       />
       <HoneyProducts />
       <Cta
-        eyebrow="Serving Rituals & Gastronomy"
+        eyebrow="Genussrituale & Gastronomie"
         title={() => (
           <>
-            <span className="text-neutral-900">Discover your </span>
+            <span className="text-neutral-900">Entdecken Sie Ihre </span>
             <span className="text-[#c5b395]">
-              <span className="font-light italic">new</span> tradition.
+              <span className="font-light italic">neue</span> Tradition.
             </span>
           </>
         )}
-        description="Whether poured chilled as a luminous aperitif, paired beside aged alpine cheeses and spicy cured Burgenland ham, or savored slowly as an evening digestif, honey wine rewards unhurried table craft."
+        description="Ob gut gekühlt als leuchtender Aperitif, zu gereiftem Almkäse und würzigem burgenländischem Schinken oder langsam genossen als abendlicher Digestif — Honigwein belohnt eine Tischkultur ohne Eile."
         href="#shop"
       />
       <Testimonial />

@@ -17,7 +17,7 @@ export function Cta({
   title,
   description,
   href,
-  buttonLabel = "Enter Shopify Storefront",
+  buttonLabel = "Zum Shop",
 }: CtaProps) {
   return (
     <section className="flex min-h-[70vh] flex-col items-center justify-center bg-white px-6 py-4 text-center sm:py-20 md:px-10 lg:px-14">

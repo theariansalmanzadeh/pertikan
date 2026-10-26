@@ -3,15 +3,15 @@ import type { Metadata } from "next";
 import { ContactUs } from "@/app/contact-us/contact-us";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Kontakt",
   description:
-    "Get in touch with Pertikan Beekeeping in Grosspetersdorf — inquiries about our mead, honey, and craft.",
+    "Nehmen Sie Kontakt mit Pertikan Beekeeping in Grosspetersdorf auf — Anfragen zu unserem Met, Honig und Handwerk.",
   keywords: [
-    "contact Pertikan",
+    "Pertikan Kontakt",
     "Pertikan Beekeeping",
     "Grosspetersdorf",
-    "mead contact",
-    "honey wine Austria",
+    "Met Kontakt",
+    "Honigwein Österreich",
   ],
 };
 

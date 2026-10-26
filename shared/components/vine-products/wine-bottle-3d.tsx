@@ -477,7 +477,7 @@ export function WineBottle3D({
       className={`relative w-full h-full select-none ${className}`}
       data-testid="wine-bottle-3d"
       data-product-id={product.id}
-      aria-label={`3D model of ${product.name} bottle`}
+      aria-label={`3D-Modell: ${product.name}-Flasche`}
       role="img"
     />
   );

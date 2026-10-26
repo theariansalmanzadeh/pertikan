@@ -20,23 +20,23 @@ type Testimonial = {
 const testimonials: Testimonial[] = [
   {
     quote:
-      "\"What's a Persian doing in Grosspetersdorf, in southern Burgenland? Making honey wine, of course - or in short: mead! Mead is one of the oldest alcoholic beverages known to humankind. In Grosspetersdorf, this classic gets a very special twist: Southern Burgenland honey forms the basis for a drink that develops its own unique character after 15 months of maturation. Completely free of sulfur or other additives, the mead is allowed to show what it's made of. On the nose and palate, we encounter a pleasant honey note that, thankfully, doesn't tip over into heavy or overly sweet flavors. This is complemented by exciting aromas of licorice, thyme, orange zest, and gingerbread. This makes it not only an interesting drink on its own, but also a surprising accompaniment to red smear cheese and a variety of desserts. A drink that sparks curiosity, invites experimentation, and brings a whole lot of fun to the glass. Anyone who hasn't tasted mead in ages should definitely remedy that. Perhaps this encounter with this ancient beverage will spark a whole new love affair!\"",
+      "\"Was macht ein Perser im südburgenländischen Grosspetersdorf? Natürlich Honigwein – oder kurz gesagt: Met! Met zählt zu den ältesten alkoholischen Getränken der Menschheit. In Grosspetersdorf bekommt dieser Klassiker eine ganz besondere Note: Südburgenländischer Honig bildet die Grundlage für ein Getränk, das nach 15 Monaten Reife seinen ganz eigenen Charakter entfaltet. Ganz ohne Schwefel oder andere Zusätze darf der Met zeigen, was in ihm steckt. In der Nase und am Gaumen begegnet uns eine angenehme Honignote, die erfreulicherweise nicht ins Schwere oder Süßliche kippt. Dazu gesellen sich spannende Aromen von Lakritze, Thymian, Orangenzeste und Lebkuchen. Das macht ihn nicht nur solo zu einem interessanten Trinkvergnügen, sondern auch zu einem überraschenden Begleiter für Rotschmierkäse und verschiedenste Desserts. Ein Getränk, das neugierig macht, zum Experimentieren einlädt und ordentlich Spaß ins Glas bringt. Wer schon seit Ewigkeiten keinen Met mehr verkostet hat, sollte das unbedingt nachholen. Vielleicht wird aus der Begegnung mit diesem uralten Getränk ja eine ganz neue Liebesgeschichte!\"",
     name: "Rene Kollegger",
-    role: "Gault & Millau . Sommelier of the Year 2026",
+    role: "Gault & Millau . Sommelier des Jahres 2026",
     avatarInitials: "RK",
   },
   {
     quote:
-      "\"Pertikan's mead is unlike anything I've tasted in my 20 years of wine judging. The balance between floral honey and the subtle complexity of its long maturation is extraordinary. A truly artisanal product that stands apart from anything produced industrially.\"",
+      "\"Der Met von Pertikan ist mit nichts zu vergleichen, was ich in 20 Jahren Weinbewertung verkostet habe. Die Balance zwischen blumigem Honig und der feinen Komplexität seiner langen Reifung ist außergewöhnlich. Ein wahrhaft handwerkliches Produkt, das sich von allem Industriellen abhebt.\"",
     name: "Maria Schreiber",
-    role: "Falstaff . Wine Editor",
+    role: "Falstaff . Weinredaktion",
     avatarInitials: "MS",
   },
   {
     quote:
-      "\"A revelation in a glass. The honey wine from Pertikan carries the soul of Southern Burgenland in every sip - wildflower meadows, limestone hills, and the patience of a true craftsman. We awarded it our Gold Medal without a moment's hesitation.\"",
+      "\"Eine Offenbarung im Glas. Der Honigwein von Pertikan trägt in jedem Schluck die Seele des Südburgenlands in sich – Wildblumenwiesen, Kalksteinhügel und die Geduld echten Handwerks. Wir haben ihm ohne einen Moment des Zögerns unsere Goldmedaille verliehen.\"",
     name: "Thomas Huber",
-    role: "Austrian Wine Challenge . Head Judge",
+    role: "Austrian Wine Challenge . Leitung der Jury",
     avatarInitials: "TH",
   },
 ];
@@ -57,7 +57,7 @@ export function Testimonial() {
 
   return (
     <section
-      aria-label="Expert Testimonials"
+      aria-label="Expertenstimmen"
       className="border-b border-neutral-200 bg-white px-6 py-16 sm:px-10 lg:px-16"
     >
       <>
@@ -65,7 +65,7 @@ export function Testimonial() {
             with arbitrary (text-[1.75rem]) can cause CSS source-order conflicts in
             Tailwind v4 where both utilities have equal specificity */}
         <h2 className="mx-auto mb-12 max-w-3xl text-center font-belgan text-[1.75rem] font-normal text-neutral-900 md:mb-16 md:text-[2.5rem]">
-          As Tasted by Experts
+          Von Experten verkostet
         </h2>
 
         {/* Carousel — wrap in a padded div so the absolute prev/next buttons
@@ -122,12 +122,12 @@ export function Testimonial() {
         {/* Dot indicators */}
         <div
           className="mt-8 flex items-center justify-center gap-2"
-          aria-label="Slide indicators"
+          aria-label="Positionsanzeige"
         >
           {Array.from({ length: count }).map((_, i) => (
             <button
               key={i}
-              aria-label={`Go to slide ${i + 1}`}
+              aria-label={`Zu Folie ${i + 1} wechseln`}
               onClick={() => api?.scrollTo(i)}
               className={`h-1.5 rounded-full transition-all duration-300 ${i === current
                 ? "w-6 bg-neutral-900"

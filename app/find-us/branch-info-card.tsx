@@ -78,7 +78,7 @@ export function BranchInfoCard({
               aria-hidden
             />
             <p className="font-helvetica text-sm font-medium text-neutral-900">
-              Opening Hours
+              Öffnungszeiten
             </p>
           </div>
 

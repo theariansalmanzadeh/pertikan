@@ -41,7 +41,7 @@ export function CollectionProductCard({
         </p>
 
         <p className="mb-8 font-helvetica text-[13px] leading-[1.6] text-neutral-600">
-          <span className="font-medium text-neutral-900">Notes:</span>{" "}
+          <span className="font-medium text-neutral-900">Noten:</span>{" "}
           {product.notes}
         </p>
 
@@ -54,7 +54,7 @@ export function CollectionProductCard({
             onClick={() => onAddToBag?.(product)}
             className="inline-flex h-10 shrink-0 cursor-pointer items-center gap-1.5 rounded-full bg-neutral-900 px-4 font-helvetica text-sm text-white transition-colors hover:bg-neutral-800 py-3"
           >
-            Add to Bag
+            In den Warenkorb
             <span aria-hidden>+</span>
           </button>
         </div>

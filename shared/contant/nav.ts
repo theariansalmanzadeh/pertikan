@@ -1,8 +1,8 @@
 export const navLinks = [
-  { href: "/collections", label: "Collections" },
-  { href: "/our-story", label: "Our Story" },
-  { href: "/contact-us", label: "Contact Us" },
-  { href: "/find-us", label: "Find Us" },
+  { href: "/collections", label: "Kollektionen" },
+  { href: "/our-story", label: "Meine Geschichte" },
+  { href: "/contact-us", label: "Kontakt" },
+  { href: "/find-us", label: "Wo Sie uns finden" },
   { href: "/events", label: "Events" },
-  { href: "/blogs", label: "Blogs" },
+  { href: "/blogs", label: "Blog" },
 ] as const;

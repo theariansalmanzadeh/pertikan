@@ -46,7 +46,7 @@ export function CollectionsSection() {
   return (
     <section
       id="collections"
-      aria-label="Pertikan Cellar and Apiary Editions"
+      aria-label="Pertikan Keller- und Imkerei-Editionen"
       className="bg-white"
     >
       <CollectionsHeader />
@@ -60,7 +60,7 @@ export function CollectionsSection() {
       <div className="px-6 md:px-16">
         {products.length === 0 ? (
           <p className="py-16 text-center font-helvetica text-sm text-neutral-400">
-            No editions match this filter.
+            Keine Editionen entsprechen diesem Filter.
           </p>
         ) : (
           <div className="grid grid-cols-1 gap-5 md:grid-cols-3 py-10">

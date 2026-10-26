@@ -5,7 +5,7 @@ export function FounderQuote() {
     <section className="relative grid grid-cols-1 border-b border-border">
       <div
         className="absolute inset-0 z-0 min-h-[480px] bg-neutral-100 md:min-h-[560px]"
-        aria-label="Founder image placeholder"
+        aria-label="Platzhalter für Gründerbild"
       >
         {/* Image goes here */}
       </div>
@@ -29,35 +29,25 @@ export function FounderQuote() {
         </div>
 
         <h2 className="font-belgan text-3xl font-bold leading-tight text-neutral-900 md:text-4xl lg:text-[2.75rem]">
-          It&apos;s 5 a.m. in Aligudarz.
+          Es ist 5 Uhr morgens in Aligudarz.
         </h2>
 
         <p className="mt-6 font-belgan text-lg font-bold leading-snug text-neutral-900 md:text-xl md:leading-relaxed">
-          Before the sun clears the jagged limestone ridges of the Zagros
-          Mountains, a young Mohammad Akbari stands beside his father in the
-          cold morning stillness.
+          Noch bevor die Sonne über die zerklüfteten Kalksteinkämme des Zagros-Gebirges steigt, steht der junge Mohammad Akbari an der Seite seines Vaters in der kalten Morgenstille.
         </p>
 
         <div className="mt-8 space-y-5 font-helvetica text-sm leading-relaxed text-neutral-500 md:text-[0.9375rem] md:leading-7">
           <p>
-            His father teaches him that beekeeping is stewardship, not
-            ownership — a quiet responsibility summed up in the words he still
-            carries:{" "}
+            Sein Vater lehrt ihn, dass Imkerei Fürsorge bedeutet, nicht Besitz – eine stille Verantwortung, zusammengefasst in den Worten, die er bis heute in sich trägt:{" "}
             <em>
-              &ldquo;Haiwanat be daste to negah mikonan&rdquo; — the animals look
-              to your hand.
+              &bdquo;Haiwanat be daste to negah mikonan&ldquo; – die Tiere schauen auf deine Hand.
             </em>
           </p>
           <p>
-            Decades later, in the rolling hills of Southern Burgenland,
-            Austria, that same morning discipline became Pertikan Beekeeping —
-            founded in Grosspetersdorf as a house of pure honey and unhurried
-            mead.
+            Jahrzehnte später, in den sanften Hügeln des Südburgenlands in Österreich, wurde aus derselben morgendlichen Disziplin Pertikan Beekeeping – gegründet in Grosspetersdorf als Haus für reinen Honig und unhastigen Met.
           </p>
           <p>
-            Today the craft is still measured by wooden hives, raw blossom
-            honey, and mead rested for eighteen months until aroma and character
-            are fully formed.
+            Noch heute misst sich das Handwerk an hölzernen Bienenstöcken, rohem Blütenhonig und Met, der achtzehn Monate ruht, bis Aroma und Charakter voll ausgebildet sind.
           </p>
         </div>
       </div>

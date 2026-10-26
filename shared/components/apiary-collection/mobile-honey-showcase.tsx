@@ -31,7 +31,7 @@ export function MobileHoneyShowcase({
               <button
                 key={honey.id}
                 type="button"
-                aria-label={`Select ${honey.name}`}
+                aria-label={`${honey.name} auswählen`}
                 onClick={() => onSelectIndex(idx)}
                 style={{ width: `${Math.round(itemState.indicatorWidth)}px` }}
                 className={`h-1 rounded-full transition-colors ${
@@ -93,7 +93,7 @@ export function MobileHoneyShowcase({
               className="absolute inset-0 flex flex-col justify-end text-left"
             >
               <p className="mb-1 font-helvetica text-xs text-neutral-400">
-                Aroma &amp; Palate
+                Aroma &amp; Gaumen
               </p>
               <p className="mb-4 font-helvetica text-[12.5px] leading-[1.55] text-neutral-700">
                 {honey.aromaAndPalate}
@@ -103,7 +103,7 @@ export function MobileHoneyShowcase({
                 onClick={() => onBuyHoney(honey)}
                 className="h-[46px] w-full cursor-pointer rounded-full bg-neutral-900 font-helvetica text-[13px] text-white transition-colors hover:bg-neutral-800"
               >
-                Buy Now
+                Jetzt kaufen
               </button>
             </div>
           );

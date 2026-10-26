@@ -15,7 +15,7 @@ export type BranchInfoCard = {
 };
 
 const defaultOpeningHours: BranchOpeningHour[] = [
-  { label: "Mon – Fri :", value: "8:00 AM – 5:00 PM" },
+  { label: "Mo – Fr :", value: "8:00 – 17:00 Uhr" },
   { label: "7512 Kirchfidisch", value: "7512 Kirchfidisch" },
   { label: "7512 Kirchfidisch", value: "7512 Kirchfidisch" },
 ];
@@ -65,7 +65,7 @@ export const branchInfoCards: BranchInfoCard[] = [
     id: "world-honey-eu",
     name: "World Honey EU",
     street: "Greutgasse 2",
-    city: "1030 Vienna",
+    city: "1030 Wien",
     phone: "+43 699 11581331",
     website: "welthonig.at",
     websiteHref: "https://welthonig.at",
@@ -88,7 +88,7 @@ export const apiaryHarvestCards: BranchInfoCard[] = [
     id: "apiary-world-honey-eu",
     name: "World Honey EU",
     street: "Greutgasse 2",
-    city: "1030 Vienna",
+    city: "1030 Wien",
     phone: "+43 699 11581331",
     website: "welthonig.at",
     websiteHref: "https://welthonig.at",

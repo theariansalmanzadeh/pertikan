@@ -108,7 +108,7 @@ export function ApiaryCollectionSection({
   return (
     <section
       id="apiary-collection"
-      aria-label="The Apiary Collection"
+      aria-label="Die Imkerei-Kollektion"
       className="w-full border-t border-neutral-200 bg-white"
     >
       <ApiaryCollectionHeader />

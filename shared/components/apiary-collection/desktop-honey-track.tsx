@@ -73,7 +73,7 @@ export function DesktopHoneyTrack({
 
                   <div className="mb-[22px]">
                     <p className="mb-1 font-helvetica text-[13px] text-neutral-400">
-                      Aroma &amp; Palate
+                      Aroma &amp; Gaumen
                     </p>
                     <p className="font-helvetica text-[13px] leading-[1.6] text-neutral-700">
                       {honey.aromaAndPalate}
@@ -82,7 +82,7 @@ export function DesktopHoneyTrack({
 
                   <div className="mb-[22px]">
                     <p className="mb-1 font-helvetica text-[13px] text-neutral-400">
-                      Texture &amp; Crystallization
+                      Textur &amp; Kristallisation
                     </p>
                     <p className="font-helvetica text-[13px] leading-[1.6] text-neutral-700">
                       {honey.textureAndCrystallization}
@@ -91,7 +91,7 @@ export function DesktopHoneyTrack({
 
                   <div className="mb-9">
                     <p className="mb-1 font-helvetica text-[13px] text-neutral-400">
-                      Table &amp; Culinary Ritual
+                      Tisch &amp; kulinarisches Ritual
                     </p>
                     <p className="font-helvetica text-[13px] leading-[1.6] text-neutral-700">
                       {honey.tableAndCulinaryRitual}
@@ -107,7 +107,7 @@ export function DesktopHoneyTrack({
                   }}
                   className="h-[46px] w-full shrink-0 cursor-pointer rounded-full bg-neutral-900 font-helvetica text-xs text-white transition-colors hover:bg-neutral-800"
                 >
-                  Buy Now
+                  Jetzt kaufen
                 </button>
               </div>
             </article>

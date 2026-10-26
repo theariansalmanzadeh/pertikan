@@ -49,7 +49,7 @@ export function Footer() {
     <footer className="bg-white px-6 pt-16 pb-10 md:px-10 md:pt-20 md:pb-12 lg:px-14">
       <div className="mx-auto ">
         {/* Desktop: brand + link groups in one grid */}
-        <div className="hidden md:grid md:grid-cols-3 md:gap-12 lg:gap-20">
+        <div className="hidden md:grid md:grid-cols-[1.25fr_1fr_1fr_1fr] md:gap-10 lg:gap-14">
           <div>
             <p className="font-belgan text-2xl text-neutral-900 md:text-[1.65rem]">
               {footerContact.brand}
@@ -81,9 +81,12 @@ export function Footer() {
               </p>
               <ul className="mt-4 space-y-2.5">
                 {group.items.map((item) => (
-                  <li key={item.href}>
+                  <li key={item.label}>
                     <Link
                       href={item.href}
+                      {...(item.href.startsWith("http")
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
                       className="font-helvetica text-sm text-neutral-800 transition-opacity hover:opacity-70"
                     >
                       {item.label}
@@ -122,7 +125,7 @@ export function Footer() {
           </div>
 
           <div className="border-t border-neutral-200 pt-10">
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-2 gap-8 [&>*:last-child:nth-child(odd)]:col-span-2">
               {footerLinkGroups.map((group) => (
                 <div key={group.title}>
                   <p className="font-helvetica text-sm text-neutral-400">
@@ -130,9 +133,12 @@ export function Footer() {
                   </p>
                   <ul className="mt-4 space-y-2.5">
                     {group.items.map((item) => (
-                      <li key={item.href}>
+                      <li key={item.label}>
                         <Link
                           href={item.href}
+                          {...(item.href.startsWith("http")
+                            ? { target: "_blank", rel: "noopener noreferrer" }
+                            : {})}
                           className="font-helvetica text-sm text-neutral-800 transition-opacity hover:opacity-70"
                         >
                           {item.label}

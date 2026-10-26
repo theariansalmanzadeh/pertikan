@@ -13,21 +13,21 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Pertikan | Craft Mead & Wine Shop",
+    default: "Pertikan | Handwerklicher Met & Wein Shop",
     template: "%s | Pertikan",
   },
   description:
-    "Shop Pertikan craft mead and wine online — barrel-aged honey wine, pure blossom honey, and small-batch bottles from Southern Burgenland, Austria.",
+    "Entdecken Sie Pertikan Met und Wein online — im Fass gereifter Honigwein, reiner Blütenhonig und Kleinserien aus dem Südburgenland, Österreich.",
   keywords: [
     "Pertikan",
-    "mead",
-    "honey wine",
-    "buy wine online",
-    "craft wine shop",
-    "Austrian wine",
-    "Burgenland mead",
-    "organic honey wine",
-    "ecommerce wine",
+    "Met",
+    "Honigwein",
+    "Wein online kaufen",
+    "Weinshop",
+    "Österreichischer Wein",
+    "Burgenland Met",
+    "Bio-Honigwein",
+    "Wein Onlineshop",
   ],
   manifest: "/site.webmanifest",
   icons: {
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${geistMono.variable} h-full antialiased`}>
+    <html lang="de" className={`${geistMono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col font-helvetica">
         <Navbar />
         <div className="flex flex-1 flex-col">{children}</div>

@@ -62,7 +62,7 @@ function DesktopScrollCards() {
       }}
     >
       <div
-        className="sticky top-0 flex items-center overflow-x-clip py-12"
+        className="sticky top-0 flex items-center overflow-x-clip py-8"
         style={{ minHeight: stickyHeight ? `${stickyHeight}px` : "100vh" }}
       >
         <motion.div

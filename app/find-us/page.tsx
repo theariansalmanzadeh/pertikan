@@ -9,15 +9,15 @@ import {
 } from "@/shared/contant/find-us";
 
 export const metadata: Metadata = {
-  title: "Find Us",
+  title: "Wo Sie uns finden",
   description:
-    "Find Pertikan mead, honey wine, and raw honey at our sales outlets and regional partner merchants.",
+    "Finden Sie Pertikan Met, Honigwein und rohen Honig in unseren Verkaufsstellen und bei regionalen Partnerhändlern.",
   keywords: [
-    "Pertikan find us",
-    "Pertikan retailers",
-    "buy Pertikan Austria",
-    "mead sales outlets",
-    "honey wine partners",
+    "Pertikan Wo Sie uns finden",
+    "Pertikan Händler",
+    "Pertikan kaufen Österreich",
+    "Met Verkaufsstellen",
+    "Honigwein Partner",
   ],
 };
 
@@ -28,7 +28,7 @@ export default function FindUsPage() {
 
       <section className="px-6 pb-16 md:px-10 md:pb-24 lg:px-14">
         <h2 className="mb-10 font-belgan text-3xl font-bold text-neutral-900 md:mb-12 md:text-4xl">
-          Mead, Cuvée &amp; Sparkling
+          Met, Cuvée &amp; Prickelndes
         </h2>
         <div className="mx-auto grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {branchInfoCards.map((branch) => (
@@ -44,7 +44,7 @@ export default function FindUsPage() {
 
       <section className="px-6 pb-16 md:px-10 md:pb-24 lg:px-14">
         <h2 className="mb-10 font-belgan text-3xl font-bold text-neutral-900 md:mb-12 md:text-4xl">
-          Apiary Harvests
+          Ernten der Imkerei
         </h2>
         <div className="mx-auto grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {apiaryHarvestCards.map((branch) => (
@@ -58,11 +58,11 @@ export default function FindUsPage() {
       </section>
 
       <Cta
-        eyebrow="Partner with Us"
-        title={() => <>Interested in Offering Pertikan?</>}
-        description="We collaborate closely with independent sommeliers, fine dining cellars, and boutique purveyors on allocated seasonal batches."
+        eyebrow="Partner werden"
+        title={() => <>Interesse, Pertikan anzubieten?</>}
+        description="Wir arbeiten eng mit unabhängigen Sommeliers, Gourmetkellern und Boutique-Lieferanten an zugeteilten saisonalen Chargen zusammen."
         href="/contact-us"
-        buttonLabel="Inquire for Wholesale"
+        buttonLabel="Großhandel anfragen"
       />
     </div>
   );

@@ -18,21 +18,30 @@ export const footerContact = {
 
 export const footerLinkGroups: FooterLinkGroup[] = [
   {
-    title: "Explore",
+    title: "Entdecken",
     items: [
-      { label: "The Collection", href: "#the-collection" },
-      { label: "The Apiary", href: "#the-apiary" },
-      { label: "Our Story", href: "#our-story" },
-      { label: "The Cellar", href: "#the-cellar" },
+      { label: "Meine Geschichte", href: "/our-story" },
+      { label: "Aus unserer Imkerei", href: "/#honig" },
+      { label: "Blog", href: "/blogs" },
+      { label: "Events", href: "/events" },
+    ],
+  },
+  {
+    title: "Besuchen & Verbinden",
+    items: [
+      { label: "Wo Sie uns finden", href: "/find-us" },
+      { label: "Kontakt", href: "/contact-us" },
+      { label: "Instagram", href: "https://instagram.com" },
+      { label: "Facebook", href: "https://facebook.com" },
     ],
   },
   {
     title: "Shop",
     items: [
-      { label: "Wine Collection", href: "#wine-collection" },
-      { label: "Honey", href: "#honey" },
-      { label: "Propolis Tropfen", href: "#propolis-tropfen" },
-      { label: "Beeswax Candles", href: "#beeswax-candles" },
+      { label: "Weinkollektion", href: "/#wine-collection" },
+      { label: "Honig", href: "/#honig" },
+      { label: "Propolis Tropfen", href: "/collections" },
+      { label: "Bienenwachskerzen", href: "/collections" },
     ],
   },
 ];
@@ -43,6 +52,6 @@ export const footerSocials: FooterLinkItem[] = [
 ];
 
 export const footerMeta = {
-  copyright: "© 2026 Pertikan Beekeeping . All rights reserved.",
-  credit: "By TabDeal",
+  copyright: "© 2026 Pertikan Beekeeping . Alle Rechte vorbehalten.",
+  credit: "Von TabDeal",
 } as const;
