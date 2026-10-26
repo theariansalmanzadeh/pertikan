@@ -10,5 +10,5 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Project rules
 
-- Do not open the browser for testing. Verify changes via code review, build/lint, or the user's own browser session instead.
+<!-- - Do not open the browser for testing. Verify changes via code review, build/lint, or the user's own browser session instead. -->
 

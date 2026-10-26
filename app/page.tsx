@@ -5,6 +5,7 @@ import { Features } from "@/shared/components/features";
 import { Hero } from "@/shared/components/hero";
 import { HoneyProducts } from "@/shared/components/honey-products/honey-products";
 import { VineProducts } from "@/shared/components/vine-products/vine-products";
+import { Testimonial } from "@/shared/components/testimonial";
 
 export const metadata: Metadata = {
   title: {
@@ -54,6 +55,7 @@ export default function Home() {
         description="Whether poured chilled as a luminous aperitif, paired beside aged alpine cheeses and spicy cured Burgenland ham, or savored slowly as an evening digestif, honey wine rewards unhurried table craft."
         href="#shop"
       />
+      <Testimonial />
     </div>
   );
 }
