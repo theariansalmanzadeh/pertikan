@@ -12,8 +12,8 @@ export const footerContact = {
   brand: "Pertikan Beekeeping",
   addressLines: ["Burgerstraße 36,", "A-7503 Grosspetersdorf,"],
   phones: ["+43 681 2051 5033", "+43 660 8280 418"],
-  email: "pertikan@gmx.at",
-  emailHref: "mailto:pertikan@gmx.at",
+  email: "info@imkerei-pertikan.at",
+  emailHref: "mailto:info@imkerei-pertikan.at",
 } as const;
 
 export const footerLinkGroups: FooterLinkGroup[] = [
