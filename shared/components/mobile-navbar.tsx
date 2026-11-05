@@ -70,7 +70,12 @@ export function MobileNavbar({ variant = "overlay" }: MobileNavbarProps) {
               <SheetClose asChild>
                 <Button
                   asChild
-                  className="h-11 w-full rounded-full bg-neutral-900 font-helvetica text-sm font-medium text-white hover:bg-neutral-800"
+                  className={cn(
+                    "h-11 w-full rounded-full font-helvetica text-sm font-medium",
+                    isLight
+                      ? "bg-black text-white hover:bg-neutral-800"
+                      : "bg-white text-black hover:bg-neutral-100"
+                  )}
                 >
                   <Link href="#shop">Shop</Link>
                 </Button>
@@ -92,10 +97,10 @@ export function MobileNavbar({ variant = "overlay" }: MobileNavbarProps) {
         <Link
           href="#shop"
           className={cn(
-            "rounded-full border px-5 py-2 font-helvetica text-sm font-medium backdrop-blur-sm transition-opacity hover:opacity-80",
+            "rounded-full border px-5 py-2 font-helvetica text-sm font-medium transition-colors",
             isLight
-              ? "border-neutral-900/30 text-neutral-900"
-              : "border-[#fafafa]/60 bg-white/10 text-[#fafafa]"
+              ? "border-black bg-black text-white hover:bg-neutral-800"
+              : "border-white bg-white text-black hover:bg-neutral-100"
           )}
         >
           Shop

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import LiquidGlass from "liquid-glass-react";
 
 import { MobileNavbar } from "@/shared/components/mobile-navbar";
 import { navLinks } from "@/shared/contant/nav";
@@ -63,18 +62,18 @@ export function Navbar({ variant }: NavbarProps) {
             flex children and collapse the Shop control.
           */}
           <div className="relative h-11 w-[7.25rem] shrink-0">
-            <LiquidGlass
-              blurAmount={50}
-              className="font-helvetica text-sm font-medium text-white"
-              padding="10px 28px"
-              cornerRadius={999}
-              style={{ position: "absolute", top: "50%", left: "50%" }}
+            <button
+              type="button"
               onClick={() => router.push("#shop")}
+              className={cn(
+                "absolute inset-0 rounded-full font-helvetica text-sm font-medium transition-colors",
+                isLight
+                  ? "bg-black text-white hover:bg-neutral-800"
+                  : "bg-white text-black hover:bg-neutral-100"
+              )}
             >
-              <span>
-                Shop
-              </span>
-            </LiquidGlass>
+              Shop
+            </button>
           </div>
         </div>
       </nav>

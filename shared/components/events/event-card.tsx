@@ -1,5 +1,5 @@
-﻿import Link from "next/link";
-import { MapPin, ArrowRight } from "lucide-react";
+﻿import Image from "next/image";
+import { MapPin } from "lucide-react";
 
 export type EventItem = {
   day: string;
@@ -10,6 +10,8 @@ export type EventItem = {
   location: string;
   address: string;
   description: string;
+  imageSrc?: string;
+  imageAlt?: string;
   href?: string;
 };
 
@@ -35,6 +37,18 @@ export function EventCard({ event, titleAs: Title = "h2" }: EventCardProps) {
         </span>
       </div>
 
+      {event.imageSrc ? (
+        <div className="relative w-32 shrink-0 sm:w-48">
+          <Image
+            src={event.imageSrc}
+            alt={event.imageAlt ?? event.title}
+            fill
+            sizes="(min-width: 1024px) 16vw, (min-width: 640px) 192px, 128px"
+            className="object-cover"
+          />
+        </div>
+      ) : null}
+
       {/* Content column */}
       <div className="flex flex-1 flex-col justify-center gap-1.5 px-5 py-5 sm:px-8 md:px-10">
         {/* Title + tag */}
@@ -52,30 +66,14 @@ export function EventCard({ event, titleAs: Title = "h2" }: EventCardProps) {
           <MapPin className="size-3 shrink-0 text-neutral-400" />
           <span>{event.location}</span>
         </div>
-        <p className="font-helvetica text-xs text-neutral-400">{event.address}</p>
+        <p className="font-helvetica text-xs text-neutral-400">
+          {event.address}
+        </p>
 
         {/* Description */}
         <p className="mt-1 font-helvetica text-[0.8125rem] leading-relaxed text-neutral-500">
           {event.description}
         </p>
-      </div>
-
-      {/* Details link */}
-      <div className="flex shrink-0 items-center px-5 sm:px-8 md:px-10">
-        {event.href ? (
-          <Link
-            href={event.href}
-            className="group flex items-center gap-1.5 font-helvetica text-xs text-neutral-500 transition-colors hover:text-neutral-900"
-          >
-            Details
-            <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-          </Link>
-        ) : (
-          <span className="flex items-center gap-1.5 font-helvetica text-xs text-neutral-400">
-            Details
-            <ArrowRight className="size-3.5" />
-          </span>
-        )}
       </div>
     </article>
   );

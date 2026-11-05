@@ -20,7 +20,7 @@ export type HoneyProduct = {
 
 const HONEY_SIZES = ["250 g", "500 g", "1 kg"] as const;
 
-// Placeholder photo, used on the first card only until per-product images exist.
+// Shared placeholder photo until per-product images are available.
 const HONEY_IMAGE = {
   src: "/images/honey-sortiment.webp",
   alt: "Pertikan Honig in Gläsern verschiedener Größen",
@@ -67,6 +67,8 @@ export const HONEY_PRODUCTS: HoneyProduct[] = [
     honeyHighlightColor: "#eb9938",
     clarity: 0.9,
     ctaUrl: "#shop",
+    imageSrc: HONEY_IMAGE.src,
+    imageAlt: HONEY_IMAGE.alt,
   },
   {
     id: "linden-honey",
@@ -86,6 +88,8 @@ export const HONEY_PRODUCTS: HoneyProduct[] = [
     honeyHighlightColor: "#d68227",
     clarity: 0.6,
     ctaUrl: "#shop",
+    imageSrc: HONEY_IMAGE.src,
+    imageAlt: HONEY_IMAGE.alt,
   },
   {
     id: "buckwheat-honey",
@@ -105,5 +109,7 @@ export const HONEY_PRODUCTS: HoneyProduct[] = [
     honeyHighlightColor: "#af7c32",
     clarity: 0.25,
     ctaUrl: "#shop",
+    imageSrc: HONEY_IMAGE.src,
+    imageAlt: HONEY_IMAGE.alt,
   },
 ];

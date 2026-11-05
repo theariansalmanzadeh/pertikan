@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
-import { Cta } from "@/shared/components/Cta";
 import { Features } from "@/shared/components/features";
 import { HomeEventsSection } from "@/shared/components/events/home-events-section";
 import { Hero } from "@/shared/components/hero";
 import { HoneyProducts } from "@/shared/components/honey-products/honey-products";
 import { VineProducts } from "@/shared/components/vine-products/vine-products";
 import { Testimonial } from "@/shared/components/testimonial";
+import { VideoIntro } from "@/shared/components/video-intro/video-intro";
 
 export const metadata: Metadata = {
   title: {
@@ -33,27 +33,25 @@ export default function Home() {
       <Features />
       <HomeEventsSection />
       <VineProducts />
-      <Cta
+      <VideoIntro
+        src="/videos/bg-video-1.mp4"
         eyebrow="Genussrituale & Gastronomie"
-        title={() => (
-          <>
-            <span className="text-neutral-900">Gemacht für Momente, die bleiben.</span>
-          </>
-        )}
+        title="Gemacht für Momente, die bleiben."
         description="Ob gut gekühlt als leuchtender Aperitif, zu gereiftem Almkäse und würzigem burgenländischem Schinken oder langsam genossen als abendlicher Digestif — Honigwein belohnt eine Tischkultur ohne Eile."
         href="#shop"
       />
       <HoneyProducts />
-      <Cta
+      <VideoIntro
+        src="/videos/bg-video-2.mp4"
         eyebrow="Genussrituale & Gastronomie"
-        title={() => (
+        title={
           <>
-            <span className="text-neutral-900">Entdecken Sie Ihre </span>
-            <span className="text-[#c5b395]">
+            <span>Entdecken Sie Ihre </span>
+            <span className="text-[#e7cda5]">
               <span className="font-light italic">neue</span> Tradition.
             </span>
           </>
-        )}
+        }
         description="Ob gut gekühlt als leuchtender Aperitif, zu gereiftem Almkäse und würzigem burgenländischem Schinken oder langsam genossen als abendlicher Digestif — Honigwein belohnt eine Tischkultur ohne Eile."
         href="#shop"
       />

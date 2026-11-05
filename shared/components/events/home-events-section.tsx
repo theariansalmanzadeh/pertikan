@@ -19,7 +19,7 @@ export function HomeEventsSection() {
           </h2>
         </header>
 
-        <div className="mt-10 md:mt-14 [&>section>article+article]:mt-5">
+        <div className="mt-10 md:mt-14">
           <EventsList limit={2} titleAs="h3" />
         </div>
       </div>
