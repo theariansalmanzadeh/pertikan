@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -20,19 +19,7 @@ export function MobileHoneyCard({
   rotationY,
   tiltZ = 0,
 }: MobileHoneyCardProps) {
-  const [showDetails, setShowDetails] = useState(false);
   const href = product.ctaUrl ?? "#shop";
-  const details = [
-    { label: "Aroma & Gaumen", body: product.aromaAndPalate },
-    {
-      label: "Textur & Kristallisation",
-      body: product.textureAndCrystallization,
-    },
-    {
-      label: "Tisch & kulinarisches Ritual",
-      body: product.tableAndCulinaryRitual,
-    },
-  ].filter((detail) => detail.body);
 
   return (
     <article className="flex flex-col items-center bg-white px-6 py-12 text-center">
@@ -46,18 +33,12 @@ export function MobileHoneyCard({
       ) : null}
 
       <div className="relative mt-10 flex w-full justify-center">
-        <button
-          type="button"
-          onClick={() => setShowDetails((open) => !open)}
+        <div
           className={`relative w-full ${
             product.imageSrc
               ? "aspect-square max-w-sm overflow-hidden"
               : "h-[300px] max-w-[220px]"
           }`}
-          aria-pressed={showDetails}
-          aria-label={
-            showDetails ? "Produktdetails ausblenden" : "Produktdetails anzeigen"
-          }
         >
           {product.imageSrc ? (
             <Image
@@ -74,34 +55,23 @@ export function MobileHoneyCard({
               tiltZ={tiltZ}
             />
           )}
-        </button>
-
-        {showDetails && details.length > 0 ? (
-          <div
-            className="absolute inset-0 flex items-center justify-center bg-black/55 p-4"
-            onClick={() => setShowDetails(false)}
-          >
-            <dl className="flex w-full max-w-sm flex-col gap-4 text-left">
-              {details.map((detail) => (
-                <div key={detail.label}>
-                  <dt className="font-helvetica text-xs tracking-wide text-[#fafafa]/90">
-                    {detail.label}
-                  </dt>
-                  <dd className="mt-1 font-helvetica text-sm leading-snug text-[#fafafa]">
-                    {detail.body}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        ) : null}
+        </div>
       </div>
 
-      {product.aromaAndPalate ? (
-        <p className="mt-10 max-w-sm font-helvetica text-sm leading-relaxed text-neutral-500">
-          {product.aromaAndPalate}
-        </p>
-      ) : null}
+      <p className="mt-10 max-w-sm font-helvetica text-sm leading-relaxed text-neutral-500">
+        {product.description}
+      </p>
+
+      <ul className="mt-8 grid w-full max-w-sm grid-cols-3 gap-3 text-left">
+        {product.sizes.map((size) => (
+          <li
+            key={size}
+            className="border-t border-neutral-200 pt-3 font-helvetica text-xs text-neutral-400"
+          >
+            {size}
+          </li>
+        ))}
+      </ul>
 
       <Button
         asChild

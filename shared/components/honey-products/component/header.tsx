@@ -31,7 +31,12 @@ export function Header() {
             Entdecken Sie die Vielfalt echter Imkerkunst. Ob samtmilder Genuss am Morgenbrot, flüssiges Gold im Tee oder schlichtweg pur mit aromatisch-frischen Noten – unser Honig steht für 100 % unverfälschte Qualität direkt aus dem Südburgenland.
           </p>
           <p>
-            Unsere Honigsorten Cremehonig, Akazienhonig, Lindenhonig und Blütenhonig sind je nach Bedarf im klassischen Glas mit 250 g, 500 g, 900 g oder 1 kg sowie für Großverbraucher im praktischen Hobbock mit 10 kg oder 40 kg erhältlich.
+            Unsere Sorten Rapshonig, Akazienhonig, Lindenhonig und Buchweizenhonig sind im Glas mit 250 g, 500 g und 1 kg erhältlich.
+          </p>
+          <p>
+            Mein Honig kommt aus dem Südburgenland und stammt aus eigener
+            Produktion. Er ist vollkommen roh und naturbelassen – so, wie ihn
+            uns unsere fleißigen Bienen geschenkt haben.
           </p>
         </div>
       </div>

@@ -7,11 +7,6 @@ import { HoneyJar3D } from "@/shared/components/apiary-collection/honey-jar-3d";
 import { Button } from "@/shared/components/ui/button";
 import type { HoneyProduct } from "@/shared/contant/honey-products";
 
-export type ProductDetail = {
-  label: string;
-  body: string;
-};
-
 export type ProductCardProps = {
   product: HoneyProduct;
   rotationY: number;
@@ -19,27 +14,12 @@ export type ProductCardProps = {
   href?: string;
 };
 
-function productDetails(product: HoneyProduct): ProductDetail[] {
-  return [
-    { label: "Aroma & Gaumen", body: product.aromaAndPalate },
-    {
-      label: "Textur & Kristallisation",
-      body: product.textureAndCrystallization,
-    },
-    {
-      label: "Tisch & kulinarisches Ritual",
-      body: product.tableAndCulinaryRitual,
-    },
-  ];
-}
-
 export function ProductCard({
   product,
   rotationY,
   tiltZ = 0,
   href,
 }: ProductCardProps) {
-  const details = productDetails(product).filter((detail) => detail.body);
   const buyHref = href ?? product.ctaUrl ?? "#shop";
 
   return (
@@ -78,17 +58,21 @@ export function ProductCard({
           ) : null}
         </div>
 
-        <div className="flex flex-1 flex-col gap-14 sm:gap-4">
-          {details.map((detail) => (
-            <div key={detail.label}>
-              <p className="font-helvetica text-sm text-neutral-400">
-                {detail.label}
-              </p>
-              <p className="mt-2 font-helvetica text-sm leading-relaxed text-neutral-900">
-                {detail.body}
-              </p>
-            </div>
-          ))}
+        <div className="flex flex-1 flex-col">
+          <p className="font-helvetica text-sm leading-relaxed text-neutral-900">
+            {product.description}
+          </p>
+
+          <ul className="mt-6 grid grid-cols-3 gap-3">
+            {product.sizes.map((size) => (
+              <li
+                key={size}
+                className="border-t border-neutral-200 pt-3 font-helvetica text-xs text-neutral-400"
+              >
+                {size}
+              </li>
+            ))}
+          </ul>
         </div>
 
         <Button
