@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import {
   Carousel,
   CarouselContent,
@@ -9,6 +8,7 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/shared/components/ui/carousel";
+import * as React from "react";
 
 type Testimonial = {
   quote: string;
@@ -20,21 +20,21 @@ type Testimonial = {
 const testimonials: Testimonial[] = [
   {
     quote:
-      "\"Was macht ein Perser im südburgenländischen Grosspetersdorf? Natürlich Honigwein – oder kurz gesagt: Met! Met zählt zu den ältesten alkoholischen Getränken der Menschheit. In Grosspetersdorf bekommt dieser Klassiker eine ganz besondere Note: Südburgenländischer Honig bildet die Grundlage für ein Getränk, das nach 15 Monaten Reife seinen ganz eigenen Charakter entfaltet. Ganz ohne Schwefel oder andere Zusätze darf der Met zeigen, was in ihm steckt. In der Nase und am Gaumen begegnet uns eine angenehme Honignote, die erfreulicherweise nicht ins Schwere oder Süßliche kippt. Dazu gesellen sich spannende Aromen von Lakritze, Thymian, Orangenzeste und Lebkuchen. Das macht ihn nicht nur solo zu einem interessanten Trinkvergnügen, sondern auch zu einem überraschenden Begleiter für Rotschmierkäse und verschiedenste Desserts. Ein Getränk, das neugierig macht, zum Experimentieren einlädt und ordentlich Spaß ins Glas bringt. Wer schon seit Ewigkeiten keinen Met mehr verkostet hat, sollte das unbedingt nachholen. Vielleicht wird aus der Begegnung mit diesem uralten Getränk ja eine ganz neue Liebesgeschichte!\"",
+      '"Was macht ein Perser im südburgenländischen Grosspetersdorf? Natürlich Honigwein – oder kurz gesagt: Met! Met zählt zu den ältesten alkoholischen Getränken der Menschheit. In Grosspetersdorf bekommt dieser Klassiker eine ganz besondere Note: Südburgenländischer Honig bildet die Grundlage für ein Getränk, das nach 15 Monaten Reife seinen ganz eigenen Charakter entfaltet. Ganz ohne Schwefel oder andere Zusätze darf der Met zeigen, was in ihm steckt. In der Nase und am Gaumen begegnet uns eine angenehme Honignote, die erfreulicherweise nicht ins Schwere oder Süßliche kippt. Dazu gesellen sich spannende Aromen von Lakritze, Thymian, Orangenzeste und Lebkuchen. Das macht ihn nicht nur solo zu einem interessanten Trinkvergnügen, sondern auch zu einem überraschenden Begleiter für Rotschmierkäse und verschiedenste Desserts. Ein Getränk, das neugierig macht, zum Experimentieren einlädt und ordentlich Spaß ins Glas bringt. Wer schon seit Ewigkeiten keinen Met mehr verkostet hat, sollte das unbedingt nachholen. Vielleicht wird aus der Begegnung mit diesem uralten Getränk ja eine ganz neue Liebesgeschichte!"',
     name: "Rene Kollegger",
     role: "Gault & Millau . Sommelier des Jahres 2026",
     avatarInitials: "RK",
   },
   {
     quote:
-      "\"Der Met von Pertikan ist mit nichts zu vergleichen, was ich in 20 Jahren Weinbewertung verkostet habe. Die Balance zwischen blumigem Honig und der feinen Komplexität seiner langen Reifung ist außergewöhnlich. Ein wahrhaft handwerkliches Produkt, das sich von allem Industriellen abhebt.\"",
+      '"Der Met von Pertikan ist mit nichts zu vergleichen, was ich in 20 Jahren Weinbewertung verkostet habe. Die Balance zwischen blumigem Honig und der feinen Komplexität seiner langen Reifung ist außergewöhnlich. Ein wahrhaft handwerkliches Produkt, das sich von allem Industriellen abhebt."',
     name: "Maria Schreiber",
     role: "Falstaff . Weinredaktion",
     avatarInitials: "MS",
   },
   {
     quote:
-      "\"Eine Offenbarung im Glas. Der Honigwein von Pertikan trägt in jedem Schluck die Seele des Südburgenlands in sich – Wildblumenwiesen, Kalksteinhügel und die Geduld echten Handwerks. Wir haben ihm ohne einen Moment des Zögerns unsere Goldmedaille verliehen.\"",
+      '"Eine Offenbarung im Glas. Der Honigwein von Pertikan trägt in jedem Schluck die Seele des Südburgenlands in sich – Wildblumenwiesen, Kalksteinhügel und die Geduld echten Handwerks. Wir haben ihm ohne einen Moment des Zögerns unsere Goldmedaille verliehen."',
     name: "Thomas Huber",
     role: "Austrian Wine Challenge . Leitung der Jury",
     avatarInitials: "TH",
@@ -68,21 +68,14 @@ export function Testimonial() {
           Von Experten verkostet
         </h2>
 
-        {/* Carousel — wrap in a padded div so the absolute prev/next buttons
-            have room to render outside the content without getting clipped.
-            px-10 sm:px-12 gives ~40-48px on each side; the default button
-            offset is -left-12 / -right-12 (3rem = 48px), so they land just
-            inside the wrapper on sm+ and slightly beyond on mobile (still
-            within the section's own padding). */}
-        {/* <div className="relative mx-auto max-w-[800px] px-10 sm:px-12"> */}
         <Carousel
           setApi={setApi}
           opts={{ loop: false }}
-          className="max-w-[1000px] mx-auto"
+          className="mx-auto max-w-[1000px] pb-10 md:pb-0"
         >
-          <CarouselContent className="w-full" >
+          <CarouselContent className="w-full">
             {testimonials.map((t, index) => (
-              <CarouselItem key={index} >
+              <CarouselItem key={index}>
                 <div className="px-2">
                   {/* Quote */}
                   <blockquote className="font-helvetica text-sm leading-relaxed text-neutral-700 md:text-[0.9375rem] md:leading-7">
@@ -112,12 +105,9 @@ export function Testimonial() {
             ))}
           </CarouselContent>
 
-          {/* No className override — let the component use its default
-                -left-12 / -right-12 which aligns with the wrapper padding */}
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className="inset-y-auto bottom-0 left-1/2 right-auto my-0 -ml-2 -translate-x-full md:inset-y-0 md:left-auto md:my-auto md:ml-0 md:translate-x-0 md:-left-12" />
+          <CarouselNext className="inset-y-auto bottom-0 left-1/2 right-auto my-0 translate-x-2 md:inset-y-0 md:left-auto md:my-auto md:translate-x-0 md:-right-12" />
         </Carousel>
-        {/* </div> */}
 
         {/* Dot indicators */}
         <div
@@ -129,10 +119,11 @@ export function Testimonial() {
               key={i}
               aria-label={`Zu Folie ${i + 1} wechseln`}
               onClick={() => api?.scrollTo(i)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${i === current
-                ? "w-6 bg-neutral-900"
-                : "w-1.5 bg-neutral-300 hover:bg-neutral-400"
-                }`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === current
+                  ? "w-6 bg-neutral-900"
+                  : "w-1.5 bg-neutral-300 hover:bg-neutral-400"
+              }`}
             />
           ))}
         </div>

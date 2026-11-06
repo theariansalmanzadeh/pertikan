@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
-import { Features } from "@/shared/components/features";
 import { HomeEventsSection } from "@/shared/components/events/home-events-section";
+import { Features } from "@/shared/components/features";
 import { Hero } from "@/shared/components/hero";
 import { HoneyProducts } from "@/shared/components/honey-products/honey-products";
-import { VineProducts } from "@/shared/components/vine-products/vine-products";
 import { Testimonial } from "@/shared/components/testimonial";
 import { VideoIntro } from "@/shared/components/video-intro/video-intro";
+import { VineProducts } from "@/shared/components/vine-products/vine-products";
 
 export const metadata: Metadata = {
   title: {

@@ -1,5 +1,5 @@
 ﻿import Image from "next/image";
-import { MapPin } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 
 export type EventItem = {
   day: string;
@@ -23,34 +23,34 @@ type EventCardProps = {
 
 export function EventCard({ event, titleAs: Title = "h2" }: EventCardProps) {
   return (
-    <article className="flex items-stretch border border-neutral-200 bg-white transition-colors hover:bg-neutral-50">
+    <article className="flex flex-col items-stretch border border-neutral-200 bg-white transition-colors hover:bg-neutral-50 md:flex-row">
       {/* Date column */}
-      <div className="flex w-20 shrink-0 flex-col items-center justify-center border-r border-neutral-200 px-3 py-6 text-center sm:w-24 md:w-28">
-        <span className="font-belgan text-[2rem] leading-none text-neutral-900 md:text-[2.5rem]">
+      <div className="flex w-full shrink-0 flex-row items-center justify-center gap-1 border-b border-neutral-200 px-3 py-4 text-center md:w-28 md:flex-col md:gap-0 md:border-b-0 md:border-r md:py-6">
+        <span className="font-belgan text-base leading-none text-neutral-900 md:text-[2rem] md:leading-none lg:text-[2.5rem]">
           {event.day}
         </span>
-        <span className="mt-1 font-helvetica text-[11px] text-neutral-500">
+        <span className="font-helvetica text-sm text-neutral-500 md:mt-1 md:text-[11px]">
           {event.month}
         </span>
-        <span className="font-helvetica text-[11px] text-neutral-500">
+        <span className="font-helvetica text-sm text-neutral-500 md:text-[11px]">
           {event.year}
         </span>
       </div>
 
       {event.imageSrc ? (
-        <div className="relative w-32 shrink-0 sm:w-48">
+        <div className="relative aspect-[3/2] w-full shrink-0 md:aspect-auto md:w-48">
           <Image
             src={event.imageSrc}
             alt={event.imageAlt ?? event.title}
             fill
-            sizes="(min-width: 1024px) 16vw, (min-width: 640px) 192px, 128px"
+            sizes="(min-width: 768px) 192px, 100vw"
             className="object-cover"
           />
         </div>
       ) : null}
 
       {/* Content column */}
-      <div className="flex flex-1 flex-col justify-center gap-1.5 px-5 py-5 sm:px-8 md:px-10">
+      <div className="flex flex-1 flex-col justify-center gap-1.5 px-4 py-4 md:px-8 md:py-5 lg:px-10">
         {/* Title + tag */}
         <div className="flex flex-wrap items-center gap-3">
           <Title className="font-belgan text-lg leading-tight text-neutral-900 md:text-xl">
@@ -71,9 +71,19 @@ export function EventCard({ event, titleAs: Title = "h2" }: EventCardProps) {
         </p>
 
         {/* Description */}
-        <p className="mt-1 font-helvetica text-[0.8125rem] leading-relaxed text-neutral-500">
+        <p className="mt-1 border-t border-neutral-200 pt-3 font-helvetica text-[0.8125rem] leading-relaxed text-neutral-500 md:border-0 md:pt-0">
           {event.description}
         </p>
+
+        {event.href ? (
+          <a
+            href={event.href}
+            className="mt-1 inline-flex items-center justify-center gap-2 font-helvetica text-xs text-neutral-700 md:hidden"
+          >
+            Details
+            <ArrowRight aria-hidden="true" className="size-3" />
+          </a>
+        ) : null}
       </div>
     </article>
   );
